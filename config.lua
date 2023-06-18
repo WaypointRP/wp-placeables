@@ -94,15 +94,6 @@ local pushTargetOptions = {
     },
 }
 
--- Define custom options that you want to show in the target menu for specific items
-local yogaCustomTargetOptions = {
-    {
-        event = 'yogamat:client:doYoga',
-        icon = "fas fa-pray",
-        label = "Do yoga",
-    },
-}
-
 local chairCustomTargetOptions = {
     {
         event = "qb-sit:sit",
@@ -110,91 +101,6 @@ local chairCustomTargetOptions = {
         label = "Sit down",
     },
 }
-
-local trafficLightCustomTargetOptions = {
-    {
-        event = "xnTrafficLights:client:OpenMenu",
-        icon = "fas fa-traffic-light",
-        label = "Remote control traffic light",
-    },
-}
-
-local trafficLightCustomPickupEvent = "xnTrafficLights:RemoveTrafficLight"
-
-
-local printerCustomTargetOptions = {
-    {
-        event = "qb-printer:client:UsePrinter",
-        icon = "fas fa-print",
-        label = "Use printer",
-    },
-}
-
-local boomboxCustomPickupEvent = 'wp-djbooth:client:pickUpBoombox'
-local boomboxCustomTargetOptions = {
-    {
-        event = 'wp-djbooth:client:targetBoombox',
-        icon = "fa-solid fa-music",
-        label = "Play some music!"
-    }
-}
-
-local fireworkCustomTargetOptions = {
-    {
-        event = 'wp-fireworks:client:lightFireworkFuse',
-        icon = "fa-solid fa-fire",
-        label = "Light fuse"
-    },
-    {
-        event = 'wp-fireworks:client:buildFireworkSequence',
-        icon = 'fa-solid fa-link',
-        label = 'Add to sequence'
-    }
-}
-
-local stretcherCustomTargetOptions = {
-    {
-        event = 'stretcher:client:loadUnloadStretcher',
-        icon = "fas fa-procedures",
-        label = "Load/unload patient",
-        animationOptions = {
-            offset = {x = -0.00, y = 0.15, z = 1.05},
-            rotation = {x = 0.0, y = 0.0, z = 175.0},
-            animationDict = "anim@gangops@morgue@table@",
-            animationName = "body_search",
-        }
-    },
-}
-
-local hospitalBed1CustomTargetOptions = {
-    {
-        event = 'stretcher:client:loadUnloadStretcher',
-        icon = "fas fa-procedures",
-        label = "Load/unload patient",
-        animationOptions = {
-            offset = {x = -0.02, y = -0.05, z = 1.3},
-            rotation = {x = 0.0, y = 0.0, z = 175.0},
-            animationDict = "anim@gangops@morgue@table@",
-            animationName = "body_search",
-        }
-    },
-}
-
-local hospitalBed2CustomTargetOptions = {
-    {
-        event = 'stretcher:client:loadUnloadStretcher',
-        icon = "fas fa-procedures",
-        label = "Load/unload patient",
-        animationOptions = {
-            offset = {x = -0.02, y = -0.05, z = 1.35},
-            rotation = {x = -5.0, y = 0.0, z = 175.0},
-            animationDict = "anim@gangops@morgue@table@",
-            animationName = "body_search",
-        }
-    },
-}
-
-
 
 Config.PlaceableProps = {
     -- Constructions props
@@ -275,32 +181,12 @@ Config.PlaceableProps = {
     {item = "medmachine", model = "v_med_oscillator4"},
     {item = "bodybag", model = "xm_prop_body_bag"},
 
-    -- Firework props
-    {item = "finalefirework1", model = "bzzz_prop_fireworks_a", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "finalefirework2", model = "bzzz_prop_fireworks_a", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "finalefirework3", model = "bzzz_prop_fireworks_a", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "fountainfirework1", model = "ind_prop_firework_03", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "fountainfirework2", model = "ind_prop_firework_03", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "fountainfirework3", model = "ind_prop_firework_03", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "missilefirework1", model = "ind_prop_firework_04", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "missilefirework2", model = "ind_prop_firework_04", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "missilefirework3", model = "ind_prop_firework_04", customTargetOptions = fireworkCustomTargetOptions},
-    {item = "strobefirework", model = "bzzz_prop_fireworks_b", customTargetOptions = fireworkCustomTargetOptions},
-
     -- Misc props
     {item = "greenscreen", model = "prop_ld_greenscreen_01"},
     {item = "ropebarrier", model = "vw_prop_vw_barrier_rope_01a"},
     {item = "largesoccerball", model = "stt_prop_stunt_soccer_ball"},
     {item = "soccerball", model = "p_ld_soc_ball_01"},
     {item = "stepladder", model = "v_med_cor_stepladder"},
-    {item = "trafficlight", model = "prop_traffic_03a", customTargetOptions = trafficLightCustomTargetOptions, customPickupEvent = trafficLightCustomPickupEvent},
-    {item = "printer", model = "prop_printer_01", customTargetOptions = printerCustomTargetOptions},
-    {item = "printer2", model = "prop_printer_02", customTargetOptions = printerCustomTargetOptions},
-    {item = "printer3", model = "v_res_printer", customTargetOptions = printerCustomTargetOptions},
-    {item = "boombox1", model = "prop_tapeplayer_01", customTargetOptions = boomboxCustomTargetOptions, customPickupEvent = boomboxCustomPickupEvent},
-    {item = "boombox2", model = "prop_boombox_01", customTargetOptions = boomboxCustomTargetOptions, customPickupEvent = boomboxCustomPickupEvent},
-    {item = "boombox3", model = "v_res_j_radio", customTargetOptions = boomboxCustomTargetOptions, customPickupEvent = boomboxCustomPickupEvent},
-    {item = "boombox4", model = "prop_radio_01", customTargetOptions = boomboxCustomTargetOptions, customPickupEvent = boomboxCustomPickupEvent},
     {item = "sexdoll", model = "prop_defilied_ragdoll_01"},
 
     -- Pushable items
@@ -483,54 +369,6 @@ Config.PlaceableProps = {
             }
         )
     },
-    {item = "stretcher", model = "prop_ld_binbag_01",
-        customTargetOptions = setCustomTargetOptions(
-            pushAndSitTargetOptions, {
-                offset = {x =  0.0, y = -1.0, z = -0.6},
-                rotation = {x = 15.0, y = 0.0, z = 0.0},
-                animationDict = "anim@heists@box_carry@",
-                animationName = "idle",
-            }, {
-                offset = {x = -0.00, y = 0.15, z = 1.05},
-                rotation = {x = 0.0, y = 0.0, z = 175.0},
-                animationDict = "anim@gangops@morgue@table@",
-                animationName = "body_search",
-            },
-            stretcherCustomTargetOptions
-        )
-    },
-    {item = "hospitalbed1", model = "v_med_bed1",
-        customTargetOptions = setCustomTargetOptions(
-            pushAndSitTargetOptions, {
-                offset = {x =  -0.4, y = -1.1, z = -0.3},
-                rotation = {x = 0.0, y = 0.0, z = 180.0},
-                animationDict = "missfinale_c2ig_11",
-                animationName = "pushcar_offcliff_f",
-            }, {
-                offset = {x = -0.02, y = -0.05, z = 1.3},
-                rotation = {x = 0.0, y = 0.0, z = 175.0},
-                animationDict = "anim@gangops@morgue@table@",
-                animationName = "body_search",
-            },
-            hospitalBed1CustomTargetOptions
-        )
-    },
-    {item = "hospitalbed2", model = "v_med_bed2",
-        customTargetOptions = setCustomTargetOptions(
-            pushAndSitTargetOptions, {
-                offset = {x =  -0.4, y = -1.1, z = -0.3},
-                rotation = {x = 0.0, y = 0.0, z = 180.0},
-                animationDict = "missfinale_c2ig_11",
-                animationName = "pushcar_offcliff_f",
-            }, {
-                offset = {x = -0.02, y = -0.05, z = 1.35},
-                rotation = {x = -5.0, y = 0.0, z = 175.0},
-                animationDict = "anim@gangops@morgue@table@",
-                animationName = "body_search",
-            },
-            hospitalBed2CustomTargetOptions
-        )
-    },
     {item = "hospitalbedtable", model = "v_med_bedtable",
         customTargetOptions = setCustomTargetOptions(
             pushTargetOptions, {
@@ -551,11 +389,6 @@ Config.PlaceableProps = {
             }
         )
     },
-
-    -- Yogamats
-    {item = "yogamat_blue", model = "prop_yoga_mat_01", customTargetOptions = yogaCustomTargetOptions},
-    {item = "yogamat_black", model = "prop_yoga_mat_02", customTargetOptions = yogaCustomTargetOptions},
-    {item = "yogamat_red", model = "prop_yoga_mat_03", customTargetOptions = yogaCustomTargetOptions},
 
     -- Chairs
     {item = "camp_chair_green", model = "prop_skid_chair_01", customTargetOptions = chairCustomTargetOptions},
