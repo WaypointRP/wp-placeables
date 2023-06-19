@@ -1,8 +1,12 @@
 # Waypoint Placeables
 
+![wp-placeables-screenshot](https://github.com/WaypointRP/wp-placeables/assets/18689469/292bfbd4-a531-4882-b01e-ccfdbfdcb17f)
+
 Waypoint Placeables is a framework that provides a simple mechanism to create useable items that place interactable props into the world. Each item can be configured with the default options and can easily be extended by providing a set of custom actions. The framework provides default options for placing items, picking up items, as well as configuring items to be a pushable prop. It is designed to be easy to use and highly customizable, allowing you to create a wide range of placeable and useable items from the selection of GTA props as well as custom props.
 
 Players can use the placeable props in a variety of ways to enhance their RP scenarios. Some examples include: building a construction site scene, creating a campsite in the woods with tents, chairs and campfires, blocking off roads for a crime scene, placing items in the world to push around to increase the realism of a scene, and much more.
+
+Preview: https://www.youtube.com/watch?v=nLiac1VYjxE
 
 ### Overview:
 - Player uses the item and the item placement mode is triggered
@@ -234,3 +238,9 @@ If you want to add or modify a placeable item, follow the below instructions.
 
 ## Dependencies
 -  qb-core
+
+## Gallery
+![wp-placeables-screenshot1](https://github.com/WaypointRP/wp-placeables/assets/18689469/0dda029f-3e62-4492-adf0-e8d77ad89994)
+![wp-placeables-screenshot2](https://github.com/WaypointRP/wp-placeables/assets/18689469/7c279cff-1b0b-458b-9013-55f15dfc0a2e)
+![wp-placeables-screenshot3](https://github.com/WaypointRP/wp-placeables/assets/18689469/bd2c99d7-de2c-415f-a9a4-d3946bac701b)
+![wp-placeables-screenshot4](https://github.com/WaypointRP/wp-placeables/assets/18689469/71d10a9d-3140-4f36-a45c-4a8cc1130709)
