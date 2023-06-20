@@ -14,9 +14,11 @@ Preview: https://www.youtube.com/watch?v=nLiac1VYjxE
 - After confirming the placement, the prop is spawned in as a networked prop so that all clients can see it and the item is removed from the player's inventory
 - Players can interact with the prop using qb-target to view the available options
 - Players can place down multiple props to build a unique scene to enhance their RP scenarios
-- When the player is done, they can clean up the scene by picking up the props (this is a default option that comes with all of the items)
+- When the player is done, they can clean up the scene by picking up the props and the item is given to the player (this is a default option that comes with all of the items)
 - If an item is pushable and/or sitable, a player can stop interacting with the item by pressing 'E' (by default).
 - While a player is pushing an item, a thread will run to check if something (like walking through a door, stumble animation, etc) caused them to break out of the pushing animation and will stick them back in the animation
+- Adding a prop model to the config also enables world spawned props of the same model to be able to be picked up (ex: shopping carts that naturally spawn at mallmart can be picked up)
+- Placed props do not persist through server restart. This script is intended to provide short term, temporary scenes per server session. 
 
 ## Placement Mode
 When in placement mode, the player is able to position the prop in a radius around them. They can control its location, rotation, and height. 
