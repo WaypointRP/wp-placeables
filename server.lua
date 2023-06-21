@@ -11,3 +11,21 @@ end
 RegisterServerEvent("wp-placeables:server:deleteWorldObject", function(object)
     TriggerClientEvent("wp-placeables:client:deleteWorldObject", -1, object)
 end)
+
+RegisterNetEvent("wp-placeables:server:RemoveItem", function(itemName)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player then 
+        Player.Functions.RemoveItem(itemName, 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
+    end
+end)
+
+RegisterNetEvent("wp-placeables:server:AddItem", function(itemName)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player then 
+        Player.Functions.AddItem(itemName, 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "add")
+    end
+end)

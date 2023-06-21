@@ -92,8 +92,7 @@ local function placeItem(item, coords, heading, shouldSnapToGround)
         StopAnimTask(ped, animationDict, animation, 1.0)
 
         -- Remove the item from the inventory
-        TriggerServerEvent("QBCore:Server:RemoveItem", itemName, 1)
-        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items[itemName], "remove")
+        TriggerServerEvent("wp-placeables:server:RemoveItem", itemName)
 
         LoadPropDict(itemModel)
 
@@ -263,8 +262,7 @@ local function pickUpItem(itemData)
             end
 
             -- Add the item to the inventory
-            TriggerServerEvent("QBCore:Server:AddItem", itemName, 1)
-            TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items[itemName], "add")
+            TriggerServerEvent("wp-placeables:server:AddItem", itemName)
 
             -- First request control of networkId and wait until have control of netId before deleting it
             -- Item will not properly delete if the client doesn't have control of the networkId
