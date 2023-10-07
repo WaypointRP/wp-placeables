@@ -12,7 +12,7 @@ Preview: https://www.youtube.com/watch?v=nLiac1VYjxE
 - Player uses the item and the item placement mode is triggered
 - A client side only (non-networked) prop is spawned and the player chooses where to place the prop
 - After confirming the placement, the prop is spawned in as a networked prop so that all clients can see it and the item is removed from the player's inventory
-- Players can interact with the prop using qb-target to view the available options
+- Players can interact with the prop using target to view the available options
 - Players can place down multiple props to build a unique scene to enhance their RP scenarios
 - When the player is done, they can clean up the scene by picking up the props and the item is given to the player (this is a default option that comes with all of the items)
 - If an item is pushable and/or sitable, a player can stop interacting with the item by pressing 'E' (by default).
@@ -181,6 +181,7 @@ Resource monitor results:
             TaskPlayAnim(ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, 0, 0, 0)
         end
     ```
+6. If using a framework other than QBCore or ESX, you can use the framework.lua file to add the framework specific implementations. Feel free to submit a PR to get support for your framework added to the main repo, so others can leverage it as well.
 
 ## Adding a new placeable item
 If you want to add or modify a placeable item, follow the below instructions.
@@ -239,7 +240,9 @@ If you want to add or modify a placeable item, follow the below instructions.
 
 
 ## Dependencies
--  qb-core
+- QBCore / ESX / Or other frameworks (must implement framework specific solutions in framework.lua)
+- QBCore / ESX / OX for Notifications
+- QB-target or equivalent script
 
 ## Gallery
 ![wp-placeables-screenshot1](https://github.com/WaypointRP/wp-placeables/assets/18689469/0dda029f-3e62-4492-adf0-e8d77ad89994)
