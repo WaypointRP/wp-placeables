@@ -213,6 +213,13 @@ Config.PlaceableProps = {
     {item = "medmachine", label = "Medical Machine", model = "v_med_oscillator4", isFrozen = true},
     {item = "bodybag", label = "Body Bag", model = "xm_prop_body_bag", isFrozen = true},
 
+    -- Chairs
+    {item = "camp_chair_green", label = "Camp Chair (Green)", model = "prop_skid_chair_01", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
+    {item = "camp_chair_blue", label = "Camp Chair (Blue)", model = "prop_skid_chair_02", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
+    {item = "camp_chair_plaid", label = "Camp Chair (Plaid)", model = "prop_skid_chair_03", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
+    {item = "plastic_chair", label = "Plastic Chair", model = "prop_chair_08", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
+    {item = "folding_chair", label = "Folding Chair", model = "xm3_prop_xm3_folding_chair_01a", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
+    
     -- Misc props
     {item = "greenscreen", label = "Green Screen", model = "prop_ld_greenscreen_01", isFrozen = true},
     {item = "ropebarrier", label = "Rope Barrier", model = "vw_prop_vw_barrier_rope_01a", isFrozen = false},
@@ -421,11 +428,4 @@ Config.PlaceableProps = {
             }
         )
     },
-
-    -- Chairs
-    {item = "camp_chair_green", label = "Camp Chair (Green)", model = "prop_skid_chair_01", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
-    {item = "camp_chair_blue", label = "Camp Chair (Blue)", model = "prop_skid_chair_02", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
-    {item = "camp_chair_plaid", label = "Camp Chair (Plaid)", model = "prop_skid_chair_03", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
-    {item = "plastic_chair", label = "Plastic Chair", model = "prop_chair_08", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
-    {item = "folding_chair", label = "Folding Chair", model = "xm3_prop_xm3_folding_chair_01a", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
 }
