@@ -428,16 +428,4 @@ Config.PlaceableProps = {
     {item = "camp_chair_plaid", label = "Camp Chair (Plaid)", model = "prop_skid_chair_03", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
     {item = "plastic_chair", label = "Plastic Chair", model = "prop_chair_08", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
     {item = "folding_chair", label = "Folding Chair", model = "xm3_prop_xm3_folding_chair_01a", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
-
-    -- Firework props
-    {item = "finalefirework1", label = "Finale Firework (White)", model = "bzzz_prop_fireworks_a", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "finalefirework2", label = "Finale Firework (Colored)", model = "bzzz_prop_fireworks_a", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "finalefirework3", label = "Finale Firework (USA)", model = "bzzz_prop_fireworks_a", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "fountainfirework1", label = "Fountain Firework (White)", model = "ind_prop_firework_03", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "fountainfirework2", label = "Fountain Firework (Colored)", model = "ind_prop_firework_03", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "fountainfirework3", label = "Fountain Firework (USA)", model = "ind_prop_firework_03", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "missilefirework1", label = "Missile Firework (White)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "missilefirework2", label = "Missile Firework (Colored)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "missilefirework3", label = "Missile Firework (USA)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
-    {item = "strobefirework", label = "Strobe Firework", model = "bzzz_prop_fireworks_b", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
 }
