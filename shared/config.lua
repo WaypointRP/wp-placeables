@@ -111,29 +111,17 @@ local chairCustomTargetOptions = {
     },
 }
 
-local fireworkCustomTargetOptions = {
-    {
-        event = 'wp-fireworks:client:lightFireworkFuse',
-        icon = "fa-solid fa-fire",
-        label = "Light fuse"
-    },
-    {
-        event = 'wp-fireworks:client:buildFireworkSequence',
-        icon = 'fa-solid fa-link',
-        label = 'Add to sequence'
-    }
-}
-
-
 -- Add the props you want to be placeable here
+-- Every prop will have the "pickup" target option added by default (to override use customPickupEvent)
 -- REQUIRED FIELDS:
 ---@param item: The item name as defined in your items.lua
 ---@param label: The label to be used for this item (displayed in the progress bar)
 ---@param model: The prop model to be used for this item
+---@param isFrozen: Whether or not the prop should be frozen in place when placed
 --- OPTIONAL FIELDS:
 ---@param customTargetOptions: Custom target options for this item, if it should do more than just pickup
+---@param customPickupEvent: If you want to override the default pickup event, set this to the event you want to be called when the "pickup" target option is used
 ---@param shouldUseItemNameState: Only need to set this to true if you want to have multiple items use the same prop model. Otherwise you do not need to define it
-
 Config.PlaceableProps = {
     -- Constructions props
     {item = "roadworkbarrier", label = "Road Work Ahead Barrier", model = "prop_barrier_work04a", isFrozen = true},
@@ -219,7 +207,7 @@ Config.PlaceableProps = {
     {item = "camp_chair_plaid", label = "Camp Chair (Plaid)", model = "prop_skid_chair_03", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
     {item = "plastic_chair", label = "Plastic Chair", model = "prop_chair_08", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
     {item = "folding_chair", label = "Folding Chair", model = "xm3_prop_xm3_folding_chair_01a", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
-    
+
     -- Misc props
     {item = "greenscreen", label = "Green Screen", model = "prop_ld_greenscreen_01", isFrozen = true},
     {item = "ropebarrier", label = "Rope Barrier", model = "vw_prop_vw_barrier_rope_01a", isFrozen = false},
