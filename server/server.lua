@@ -1,7 +1,7 @@
 -- Setup all the placeable props as useable items
 for _, prop in pairs(Config.PlaceableProps) do
     CreateUseableItem(prop.item, function(source, item)
-        TriggerClientEvent("wp-placeables:client:placeItem", source, Core.Shared.Items[prop.item])
+        TriggerClientEvent("wp-placeables:client:placeItem", source, prop)
     end)
 end
 

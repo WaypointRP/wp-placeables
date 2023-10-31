@@ -39,6 +39,11 @@ local function deepcopy(orig) -- modified the deep copy function from http://lua
     return copy
 end
 
+-- Helper function to combine default options with custom target options for items
+---@param targetOptions: The default target options for the item (example pushTargetOptions for push only objects and pushAndSitTargetOptions for push and sit objects)
+---@param animationPushOptions: Optional - The custom animation options for pushing the object (modifying offsets, rotations, animations)
+---@param animationSitOptions: Optional - The custom animation options for sitting on the object (modifying offsets, rotations, animations)
+---@param otherOptions: Optional - Any other custom target options you want to add to the item
 local function setCustomTargetOptions(targetOptions, animationPushOptions, animationSitOptions, otherOptions)
     local customTargetOptions = deepcopy(targetOptions)
 

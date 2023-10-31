@@ -71,14 +71,14 @@ end
 -- This handles placing the actual item that is network synced
 local function placeItem(item, coords, heading, shouldSnapToGround)
     local ped = PlayerPedId()
-    local itemName = item.name
+    local itemName = item.item
     local itemModel = item.model
     local shouldFreezeItem = item.isFrozen
 
     -- Cancel any active animation
     ClearPedTasks(ped)
 
-    Progressbar("place_item", "Placing "..item.label, 750, false, true, {
+    Progressbar("place_item", "Placing "..item.label, 750, false, true, {Z
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
