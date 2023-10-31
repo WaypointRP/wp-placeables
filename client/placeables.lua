@@ -78,7 +78,7 @@ local function placeItem(item, coords, heading, shouldSnapToGround)
     -- Cancel any active animation
     ClearPedTasks(ped)
 
-    Progressbar("place_item", "Placing "..item.label, 750, false, true, {Z
+    Progressbar("place_item", "Placing "..item.label, 750, false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
