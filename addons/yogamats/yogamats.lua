@@ -1,4 +1,8 @@
+local shouldReduceStress = true -- Set to true to periodically reduce stress while doing yoga
+local shouldIncreaseHealth = true -- Set to true to periodically heal while doing yoga
+local buffInterval = 10000 -- How often to apply buffs while doing yoga (in milliseconds)
 local isDoingYoga = false
+local animationDict = "missfam5_yoga"
 local yogaPoses = {
     "start_pose",
     "start_to_a1",
@@ -32,52 +36,44 @@ local yogaPoses = {
     "f_yogapose_c",
 }
 
--- Functions
-
 -- Thread to control actively doing yoga on the mat and the different poses
-function handleYogaPoses(yogaMatEntity)
+local function startYogaMatInteraction(yogaMatEntity)
     local ped = PlayerPedId()
-    local tickRate = 10000
     ClearPedTasks(ped)
 
     isDoingYoga = true
-    TriggerEvent('hud:client:ToggleEffectZone', true)
 
-    -- Put ped in center of mat
-    local yogamatCoords = GetEntityCoords(yogaMatEntity)
-    local yogamatHeading = GetEntityHeading(yogaMatEntity)
-    SetEntityCoords(ped, yogamatCoords)
-    SetEntityHeading(ped, yogamatHeading-90)
+    -- Put player in the center of the mat and facing the correct direction
+    local yogaMatCoords = GetEntityCoords(yogaMatEntity)
+    local yogaMatHeading = GetEntityHeading(yogaMatEntity)
+    SetEntityCoords(ped, yogaMatCoords)
+    SetEntityHeading(ped, yogaMatHeading-90)
 
-    local animationDict = "missfam5_yoga"
-    RequestAnimDict(animationDict)
-    while not HasAnimDictLoaded(animationDict) do
-        Wait(7)
-    end
+    LoadAnimDict(animationDict)
 
-    -- Starting pose
+    -- Put the player in the starting yoga pose
     TaskPlayAnim(ped, animationDict, yogaPoses[1] , 8.0, -8.0, -1, 2, 0, false, false, false)
 
-    -- Thread handles key presses for left, right, up arrows for cycling the emotes
+    -- Start a thread that handles listening for keypresses while the player is actively using the yoga mat 
+    -- Handles key presses for LEFT, RIGHT, UP arrows for cycling the emotes,
+    -- BACKSPACE or walking away from the yoga mat will cancel out of the thread
     CreateThread(function()
-        local index = 2
+        local index = 2 -- Start at index 2 since player is already in the first pose
         while isDoingYoga do
-            if IsControlJustPressed(0, 194) or (#(GetEntityCoords(ped) - yogamatCoords) > 5) then --backspace or player moved too far away
-                -- cancel out of yoga
+            if IsControlJustPressed(0, 194) or (#(GetEntityCoords(ped) - yogaMatCoords) > 5) then -- BACKSPACE or walk away to cancel
                 isDoingYoga = false
                 ClearPedTasks(ped)
-                TriggerEvent('hud:client:ToggleEffectZone', false)
-            elseif IsControlJustPressed(0, 188) then -- up arrow
+            elseif IsControlJustPressed(0, 188) then -- UP arrow - begin yoga loop
                 ClearPedTasks(ped)
                 TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_YOGA', 0, true)
-            elseif IsControlJustPressed(0, 189) then -- left arrow
+            elseif IsControlJustPressed(0, 189) then -- LEFT arrow - cycle poses
                 if index <= 1 then 
                     index = #yogaPoses
                 else
                     index = index - 1
                 end
                 TaskPlayAnim(ped, animationDict, yogaPoses[index] , 8.0, -8.0, -1, 2, 0, false, false, false)
-            elseif IsControlJustPressed(0, 190) then -- right arrow
+            elseif IsControlJustPressed(0, 190) then -- RIGHT arrow - cycle poses
                 if index >= #yogaPoses then
                     index = 1
                 else
@@ -89,28 +85,29 @@ function handleYogaPoses(yogaMatEntity)
         end
     end)
 
-    -- Thread handles periodically applying the stress + health buffs
-    CreateThread(function()
-        Wait(tickRate)
-        while isDoingYoga do
-            TriggerServerEvent("QBCore:Server:SetMetaData", "stress", QBCore.Functions.GetPlayerData().metadata["stress"] - 2.0)
-            SetEntityHealth(ped, GetEntityHealth(ped) + 1)
+    if shouldReduceStress or shouldIncreaseHealth then
+        -- Thread handles periodically applying the stress + health buffs
+        CreateThread(function()
+            while isDoingYoga do
+                Wait(buffInterval)
 
-            Wait(tickRate)
-        end
-    end)
+                if shouldReduceStress then
+                    SetPlayerStressMetaData(-2.0)
+                end
+
+                if shouldIncreaseHealth then
+                    SetEntityHealth(ped, GetEntityHealth(ped) + 1)
+                end
+            end
+        end)
+    end
 end
 
-
--- Events
-
-
 -- Start doing yoga
-RegisterNetEvent('yogamat:client:doYoga', function(data)
-    local ped = PlayerPedId()
+RegisterNetEvent('wp-placeables-yoga:client:useYogaMat', function(data)
     local yogaMatEntity = data.entity
 
-    QBCore.Functions.Notify('Left/right arrow keys to cycle poses. Up arrow to loop. Backspace to exit.', 'primary', 7500)
+    Notify('Left/Right arrow keys to cycle poses. Up arrow to loop. Backspace to exit.', 'primary', 7500)
 
-    handleYogaPoses(yogaMatEntity)
+    startYogaMatInteraction(yogaMatEntity)
 end)

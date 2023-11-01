@@ -64,6 +64,8 @@ local function setCustomTargetOptions(targetOptions, animationPushOptions, anima
     return customTargetOptions
 end
 
+-- Default target options
+
 local pushAndSitTargetOptions = {
     {
         event = "wp-placeables:client:pushObject",
@@ -103,11 +105,21 @@ local pushTargetOptions = {
     },
 }
 
+-- Define custom target options here for addon items
+
 local chairCustomTargetOptions = {
     {
         event = "qb-sit:sit",
         icon = "fas fa-chair",
         label = "Sit down",
+    },
+}
+
+local yogaCustomTargetOptions = {
+    {
+        event = "wp-placeables-yoga:client:useYogaMat",
+        icon = "fas fa-pray",
+        label = "Do yoga",
     },
 }
 
@@ -416,6 +428,13 @@ Config.PlaceableProps = {
             }
         )
     },
+
+    -- ADDON ITEMS
+
+    -- Yogamats
+    {item = "yogamat_blue", label = "Yogamat (Blue)", model = "prop_yoga_mat_01", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    {item = "yogamat_black", label = "Yogamat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    {item = "yogamat_red", label = "Yogamat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
 
     -- ADD YOUR CUSTOM PROPS HERE
 }

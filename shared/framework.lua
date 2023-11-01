@@ -103,6 +103,16 @@ function AddTargetModel(modelName, targetOptions)
     end
 end
 
+-- Gets the players current stress metadata and updates it based on the increment value
+---@param increment number The amount to increment the stress by (negative values will reduce stress)
+function SetPlayerStressMetaData(increment)
+    if Config.Framework == 'esx' then
+        -- No player metadata in ESX
+    elseif Config.Framework == 'qb' then
+        TriggerServerEvent("QBCore:Server:SetMetaData", "stress", Core.Functions.GetPlayerData().metadata["stress"] + increment) 
+    end
+end
+
 --------------------- SERVER FUNCTIONS ---------------------
 
 function CreateCallback(...)
