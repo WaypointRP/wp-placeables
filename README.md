@@ -186,14 +186,22 @@ Resource monitor results:
 ## Adding a new placeable item
 If you want to add or modify a placeable item, follow the below instructions.
 
+> All props will receive the pickup action by default.
+
 1. First determine what prop(s) you want to add. It is recommended to use a site such as [Pleb Masters: Forge](https://forge.plebmasters.de/objects) to find props and the model names.
 2. Add the new item to your items.lua file as you normally would
-    - Make sure to include the following additional fields:
-        - `['model'] = "<propModelName>"` - this is the model of the prop that will be spawned
-        - `['isFrozen'] = <true/false>` - whether or not the prop will be frozen in place when it is spawned
-        - `['shouldUseItemNameState'] = <true/false>` - if you intend to use the same prop model for multiple items, then you will need to set this as true, otherwise you do not need to define this. AddTargetModel only supports one set of options per model, so this flag is necessary to use a statebag property instead.
 3. Add the item to the `Config.PlaceableProps` in config.lua
-    - If the prop is just a simple prop with no custom options then all you need to do is add: `{item = "<itemName>", model = "<propModelName>"}`.
+    - If the prop is just a simple prop with no custom options then all you need to do is add: `{item = "<itemName>", label = "<label", model = "<propModelName>", isFrozen = <true/false>}`.
+        - Required Fields:
+            - `item` - the name of the item you added to your items table
+            - `label` - the label of the item
+            - `model` - the model of the prop that will be spawned
+            - `isFrozen` - whether or not the prop will be frozen in place when it is spawned
+        - Optional Fields:
+            - `customTargetOptions` - use this if you want to add more options than just picking up the item
+            - `customPickupEvent` - use this if you want to add a custom event to be called when the item is picked up, rather than using the default handler
+            - `shouldUseItemNameState` - use this if you want to use the same prop model for multiple items.
+                - _AddTargetModel only supports one set of options per model, so this flag is necessary to use a statebag property instead._
     - If you want to put custom actions on the prop, then you will also need to include the `customTargetOptions`.
         ```lua
         local exampleCustomTargetOptions = {
@@ -217,7 +225,7 @@ If you want to add or modify a placeable item, follow the below instructions.
         ```
     - If you want the item to be a pushable object, utilize the default `pushTargetOptions`. If you also want the object to have the option to sit on it use `pushAndSitTargetOptions`. Most likely you will need to override the offset, rotation, and potentially the animations. Use the `setCustomTargetOptions()` helper function to override only the values you need and the rest will be copied. Reference the existing pushable objects to see how this is done. 
         ```lua
-            {item = "wheelbarrow",   model = "prop_wheelbarrow01a",
+            {item = "wheelbarrow", model = "prop_wheelbarrow01a",
                 customTargetOptions = setCustomTargetOptions(
                     pushAndSitTargetOptions, {
                         offset = {x =  -0.4, y = -1.8, z = -0.6},
@@ -233,7 +241,7 @@ If you want to add or modify a placeable item, follow the below instructions.
                 )
             },
         ```
-> Ensure itemName and propModelName matches the item you added in step 1
+> Ensure `item` matches the item you added in step 1
 
 ## Optional
 - If you want to enable logging for the placement/pickup of items, you just need to capture the logging event for `itemplacement`. We use the following event for capturing the logs: `TriggerServerEvent("qb-log:server:CreateLog", "itemplacement", "Item "..action.." By:", color, logMessage)`

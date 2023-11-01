@@ -416,4 +416,6 @@ Config.PlaceableProps = {
             }
         )
     },
+
+    -- ADD YOUR CUSTOM PROPS HERE
 }
