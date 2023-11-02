@@ -15,6 +15,7 @@ client_scripts {
     'client/client.lua',
     'client/pushables.lua',
     'client/placeables.lua',
+    'addons/yogamats/yogamats.lua',
 }
 
 server_scripts {

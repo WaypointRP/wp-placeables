@@ -104,7 +104,7 @@ local function startYogaMatInteraction(yogaMatEntity)
 end
 
 -- Start doing yoga
-RegisterNetEvent('wp-placeables-yoga:client:useYogaMat', function(data)
+RegisterNetEvent('wp-placeables:client:useYogaMat', function(data)
     local yogaMatEntity = data.entity
 
     Notify('Left/Right arrow keys to cycle poses. Up arrow to loop. Backspace to exit.', 'primary', 7500)

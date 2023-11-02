@@ -109,7 +109,11 @@ function SetPlayerStressMetaData(increment)
     if Config.Framework == 'esx' then
         -- No player metadata in ESX
     elseif Config.Framework == 'qb' then
-        TriggerServerEvent("QBCore:Server:SetMetaData", "stress", Core.Functions.GetPlayerData().metadata["stress"] + increment) 
+        local newStressValue = Core.Functions.GetPlayerData().metadata["stress"] + increment
+        if newStressValue < 0 then
+            newStressValue = 0
+        end
+        TriggerServerEvent("QBCore:Server:SetMetaData", "stress", newStressValue) 
     end
 end
 

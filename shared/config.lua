@@ -117,7 +117,7 @@ local chairCustomTargetOptions = {
 
 local yogaCustomTargetOptions = {
     {
-        event = "wp-placeables-yoga:client:useYogaMat",
+        event = "wp-placeables:client:useYogaMat",
         icon = "fas fa-pray",
         label = "Do yoga",
     },
@@ -432,9 +432,9 @@ Config.PlaceableProps = {
     -- ADDON ITEMS
 
     -- Yogamats
-    {item = "yogamat_blue", label = "Yogamat (Blue)", model = "prop_yoga_mat_01", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
-    {item = "yogamat_black", label = "Yogamat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
-    {item = "yogamat_red", label = "Yogamat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    {item = "yogamat_blue", label = "Yoga mat (Blue)", model = "prop_yoga_mat_01", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    {item = "yogamat_black", label = "Yoga mat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    {item = "yogamat_red", label = "Yoga mat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
 
     -- ADD YOUR CUSTOM PROPS HERE
 }
