@@ -84,7 +84,13 @@ end
 function Progressbar(...)
     if IsDuplicityVersion() then return end
     if Config.Framework == 'esx' then
-        -- TODO: Implement ESX progressbar
+        -- TODO: Implement ESX progressbar, until then we'll just fallback to directly calling the callback
+        -- We pass in all the args as ... and pass forward to the calling function
+        -- Since we dont yet have a progressbar implementation, directly call the callback to place the item
+        -- The callback is the 10th arg in the list of args XD
+        local args = {...}
+        local _, _, _, _, _, _, _, _, _, callback = table.unpack(args)
+        callback()
     elseif Config.Framework == 'qb' then
         return Core.Functions.Progressbar(...)
     end
