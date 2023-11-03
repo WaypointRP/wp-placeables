@@ -1,6 +1,3 @@
-local shouldReduceStress = true -- Set to true to periodically reduce stress while doing yoga
-local shouldIncreaseHealth = true -- Set to true to periodically heal while doing yoga
-local buffInterval = 10000 -- How often to apply buffs while doing yoga (in milliseconds)
 local isDoingYoga = false
 local animationDict = "missfam5_yoga"
 local yogaPoses = {
@@ -85,17 +82,17 @@ local function startYogaMatInteraction(yogaMatEntity)
         end
     end)
 
-    if shouldReduceStress or shouldIncreaseHealth then
+    if Config.YogaMats.ShouldReduceStress or Config.YogaMats.ShouldIncreaseHealth then
         -- Thread handles periodically applying the stress + health buffs
         CreateThread(function()
             while isDoingYoga do
-                Wait(buffInterval)
+                Wait(Config.YogaMats.BuffInterval)
 
-                if shouldReduceStress then
+                if Config.YogaMats.ShouldReduceStress then
                     SetPlayerStressMetaData(-2.0)
                 end
 
-                if shouldIncreaseHealth then
+                if Config.YogaMats.ShouldIncreaseHealth then
                     SetEntityHealth(ped, GetEntityHealth(ped) + 1)
                 end
             end

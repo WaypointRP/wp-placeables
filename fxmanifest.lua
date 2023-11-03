@@ -9,6 +9,7 @@ shared_script {
     -- '@ox_lib/init.lua', -- Uncomment this if you are planning to use any ox scripts (such as ox notify)
     'shared/config.lua',
     'shared/framework.lua',
+    'addons/yogamats/config.lua',
 }
 
 client_scripts {
