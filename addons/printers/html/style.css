@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    font-family: "Lato", sans-serif;
+}
+
+.document-container {
+    display: none;
+    position: absolute;
+    width: 55vh;
+    height: 85vh;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.document-container > img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.printer-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 65vh;
+    height: 45vh;
+    background-color: rgb(255, 255, 255);
+
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    border-radius: .2vh;
+
+    overflow: hidden;
+}
+
+.printer-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5vh;
+    background-color: rgb(51, 103, 199);
+}
+
+.header-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.5vh;
+
+    margin: .75vh;
+}
+
+.printer-input {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 40vh;
+    height: 4.5vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 1.5vh 1.5vh 1.5vh 1.5vh;
+
+
+    outline: none;
+    border: none;
+
+    text-align: center;
+
+    font-family: sans-serif;
+
+    transition: .2s ease-in-out;
+
+    border-bottom: .4vh solid rgba(0, 128, 0, 0);
+}
+
+.printer-input:focus {
+    border-radius: 1.5vh 1.5vh 0 0;
+    border-bottom: .4vh solid orange;
+}
+
+.printer-input:valid {
+    border-radius: 1.5vh 1.5vh 0 0;
+    border-bottom: .4vh solid green;
+}
+
+.printer-accept {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 18vh;
+    height: 7vh;
+    background-color: black;
+    margin: 5vh;
+    left: 10%;
+    color: #fff;
+    text-align: center;
+    line-height: 7vh;
+}
+
+.printer-decline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 18vh;
+    height: 7vh;
+    background-color: black;
+    margin: 5vh;
+    right: 10%;
+    color: #fff;
+    text-align: center;
+    line-height: 7vh;
+}

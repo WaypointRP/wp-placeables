@@ -123,6 +123,14 @@ local yogaCustomTargetOptions = {
     },
 }
 
+local printerCustomTargetOptions = {
+    {
+        event = "wp-placeables:printer:client:UsePrinter",
+        icon = "fas fa-print",
+        label = "Use printer",
+    },
+}
+
 -- Add the props you want to be placeable here
 -- Every prop will have the "pickup" target option added by default (to override use customPickupEvent)
 -- REQUIRED FIELDS:
@@ -436,5 +444,10 @@ Config.PlaceableProps = {
     {item = "yogamat_black", label = "Yoga mat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
     {item = "yogamat_red", label = "Yoga mat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
 
+    -- Printers
+    {item = "printer", label = "Printer", model = "prop_printer_01", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    {item = "printer2", label = "Printer", model = "prop_printer_02", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    {item = "printer3", label = "Printer", model = "v_res_printer", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    
     -- ADD YOUR CUSTOM PROPS HERE
 }

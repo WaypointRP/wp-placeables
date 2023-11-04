@@ -138,7 +138,7 @@ function CreateUseableItem(...)
 end
 
 -- Adds item to the players inventory
-function AddItem(source, name, amount)
+function AddItem(source, name, amount, info)
     if not IsDuplicityVersion() then return end
     if Config.Framework == 'esx' then
         local xPlayer = Core.GetPlayerFromId(source)
@@ -146,7 +146,7 @@ function AddItem(source, name, amount)
     elseif Config.Framework == 'qb' then
         local Player = Core.Functions.GetPlayer(source)
         TriggerClientEvent('inventory:client:ItemBox', source, Core.Shared.Items[name], "add")
-        return Player.Functions.AddItem(name, amount) 
+        return Player.Functions.AddItem(name, amount, nil, info) 
     end
 end
 

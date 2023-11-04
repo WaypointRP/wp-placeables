@@ -10,6 +10,7 @@ shared_script {
     'shared/config.lua',
     'shared/framework.lua',
     'addons/yogamats/config.lua',
+    'addons/printers/config.lua',
 }
 
 client_scripts {
@@ -17,10 +18,18 @@ client_scripts {
     'client/pushables.lua',
     'client/placeables.lua',
     'addons/yogamats/yogamats.lua',
+    'addons/printers/client.lua',
 }
 
 server_scripts {
     'server/server.lua',
+    'addons/printers/server.lua',
+}
+
+ui_page "addons/printers/html/index.html"
+
+files {
+    "addons/printers/html/*",
 }
 
 lua54 'yes'
