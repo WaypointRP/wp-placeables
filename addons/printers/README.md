@@ -20,6 +20,8 @@ Add this to your items.lua:
 ["printer"] = {["name"] = "printer", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer1.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
 ["printer2"] = {["name"] = "printer2", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer2.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
 ["printer3"] = {["name"] = "printer3", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer3.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
+["printer4"] = {["name"] = "printer4", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer4.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
+["photocopier"] = {["name"] = "printer5", ["label"] = "Photocopier", ["weight"] = 5000, ["type"] = "item", ["image"] = "photocopier.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Make a lot of copies"},
 ```
 
 ### Credit
