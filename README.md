@@ -162,6 +162,18 @@ Resource monitor results:
         ["lawnmower"] 			         = {["name"] = "lawnmower", 			        ["label"] = "Lawnmower", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "lawnmower.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Cuts grass"},
         ["toolchest"] 			         = {["name"] = "toolchest", 			        ["label"] = "Tool Chest", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "toolchest.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A sturdy toolchest"},
         ["carjack"] 			         = {["name"] = "carjack", 			            ["label"] = "Car jack", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "carjack.png", 		        ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A car jack"},
+
+        -- Addon placeables
+        ["yogamat_blue"] 			= {["name"] = "yogamat_blue", 			["label"] = "Yoga mat (Blue)", 			        ["weight"] = 500, 		    ["type"] = "item", 		["image"] = "yogamat_blue.png", 	    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Yoga is a great way to reduce stress"},
+        ["yogamat_black"] 		    = {["name"] = "yogamat_black", 			["label"] = "Yoga mat (Black)", 		        ["weight"] = 500, 		    ["type"] = "item", 		["image"] = "yogamat_black.png", 	    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Yoga is a great way to reduce stress"},
+        ["yogamat_red"] 			= {["name"] = "yogamat_red", 			["label"] = "Yoga mat (Red)", 			        ["weight"] = 500, 		    ["type"] = "item", 		["image"] = "yogamat_red.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Yoga is a great way to reduce stress"},
+        
+        ["printer"] = {["name"] = "printer", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer1.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
+        ["printer2"] = {["name"] = "printer2", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer2.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
+        ["printer3"] = {["name"] = "printer3", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer3.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
+        ["printer4"] = {["name"] = "printer4", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer4.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
+        ["photocopier"] = {["name"] = "photocopier", ["label"] = "Photocopier", ["weight"] = 5000, ["type"] = "item", ["image"] = "photocopier.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Make a lot of copies"},
+	
         -----------------------
         -- END OF PLACEABLES --
         -----------------------
@@ -189,7 +201,7 @@ If you want to add or modify a placeable item, follow the below instructions.
 > All props will receive the pickup action by default.
 
 1. First determine what prop(s) you want to add. It is recommended to use a site such as [Pleb Masters: Forge](https://forge.plebmasters.de/objects) to find props and the model names.
-2. Add the new item to your items.lua file as you normally would
+2. Add the new item to your items.lua file as you normally would (_don't forget to add an image to your inventory script_)
 3. Add the item to the `Config.PlaceableProps` in config.lua
     - If the prop is just a simple prop with no custom options then all you need to do is add: `{item = "<itemName>", label = "<label", model = "<propModelName>", isFrozen = <true/false>}`.
         - Required Fields:
