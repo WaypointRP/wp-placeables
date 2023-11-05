@@ -115,13 +115,14 @@ local chairCustomTargetOptions = {
     },
 }
 
-local yogaCustomTargetOptions = {
-    {
-        event = "wp-placeables:client:useYogaMat",
-        icon = "fas fa-pray",
-        label = "Do yoga",
-    },
-}
+-- Uncomment this line if you are using wp-yogamats
+-- local yogaCustomTargetOptions = {
+--     {
+--         event = "wp-yogamats:client:useYogaMat",
+--         icon = "fas fa-pray",
+--         label = "Do yoga",
+--     },
+-- }
 
 local printerCustomTargetOptions = {
     {
@@ -440,9 +441,10 @@ Config.PlaceableProps = {
     -- ADDON ITEMS
 
     -- Yogamats
-    {item = "yogamat_blue", label = "Yoga mat (Blue)", model = "prop_yoga_mat_01", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
-    {item = "yogamat_black", label = "Yoga mat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
-    {item = "yogamat_red", label = "Yoga mat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    -- Uncomment this line if you are using wp-yogamats
+    -- {item = "yogamat_blue", label = "Yoga mat (Blue)", model = "prop_yoga_mat_01", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    -- {item = "yogamat_black", label = "Yoga mat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    -- {item = "yogamat_red", label = "Yoga mat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
 
     -- Printers
     {item = "printer", label = "Printer", model = "prop_printer_01", isFrozen = true, customTargetOptions = printerCustomTargetOptions},

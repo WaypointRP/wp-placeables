@@ -164,9 +164,6 @@ Resource monitor results:
         ["carjack"] 			         = {["name"] = "carjack", 			            ["label"] = "Car jack", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "carjack.png", 		        ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A car jack"},
 
         -- Addon placeables
-        ["yogamat_blue"] 			= {["name"] = "yogamat_blue", 			["label"] = "Yoga mat (Blue)", 			        ["weight"] = 500, 		    ["type"] = "item", 		["image"] = "yogamat_blue.png", 	    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Yoga is a great way to reduce stress"},
-        ["yogamat_black"] 		    = {["name"] = "yogamat_black", 			["label"] = "Yoga mat (Black)", 		        ["weight"] = 500, 		    ["type"] = "item", 		["image"] = "yogamat_black.png", 	    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Yoga is a great way to reduce stress"},
-        ["yogamat_red"] 			= {["name"] = "yogamat_red", 			["label"] = "Yoga mat (Red)", 			        ["weight"] = 500, 		    ["type"] = "item", 		["image"] = "yogamat_red.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Yoga is a great way to reduce stress"},
         
         ["printer"] = {["name"] = "printer", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer1.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
         ["printer2"] = {["name"] = "printer2", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer2.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
@@ -274,3 +271,4 @@ If you want to add or modify a placeable item, follow the below instructions.
 Checkout these scripts that use Waypoint Placeables!
 
 - [Waypoint Fireworks](https://backsh00ter.tebex.io/package/5753511)
+- [Waypoint Yogamats](https://github.com/WaypointRP/wp-yogamats)
