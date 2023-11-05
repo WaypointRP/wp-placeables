@@ -164,12 +164,6 @@ Resource monitor results:
         ["carjack"] 			         = {["name"] = "carjack", 			            ["label"] = "Car jack", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "carjack.png", 		        ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A car jack"},
 
         -- Addon placeables
-        
-        ["printer"] = {["name"] = "printer", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer1.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
-        ["printer2"] = {["name"] = "printer2", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer2.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
-        ["printer3"] = {["name"] = "printer3", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer3.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
-        ["printer4"] = {["name"] = "printer4", ["label"] = "Printer", ["weight"] = 5000, ["type"] = "item", ["image"] = "printer4.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Print a nice document"},
-        ["photocopier"] = {["name"] = "photocopier", ["label"] = "Photocopier", ["weight"] = 5000, ["type"] = "item", ["image"] = "photocopier.png", ["unique"] = true,     ["useable"] = true, ["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Make a lot of copies"},
 	
         -----------------------
         -- END OF PLACEABLES --
@@ -268,7 +262,8 @@ If you want to add or modify a placeable item, follow the below instructions.
 ![wp-placeables-screenshot4](https://github.com/WaypointRP/wp-placeables/assets/18689469/71d10a9d-3140-4f36-a45c-4a8cc1130709)
 
 ## Scripts that use Waypoint Placeables
-Checkout these scripts that use Waypoint Placeables!
+Checkout these addon scripts that use Waypoint Placeables!
 
 - [Waypoint Fireworks](https://backsh00ter.tebex.io/package/5753511)
 - [Waypoint Yogamats](https://github.com/WaypointRP/wp-yogamats)
+- [Waypoint Printer](https://github.com/WaypointRP/wp-printer)
