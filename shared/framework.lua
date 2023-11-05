@@ -103,20 +103,6 @@ function AddTargetModel(modelName, targetOptions)
     end
 end
 
--- Gets the players current stress metadata and updates it based on the increment value
----@param increment number The amount to increment the stress by (negative values will reduce stress)
-function SetPlayerStressMetaData(increment)
-    if Config.Framework == 'esx' then
-        -- No player metadata in ESX
-    elseif Config.Framework == 'qb' then
-        local newStressValue = Core.Functions.GetPlayerData().metadata["stress"] + increment
-        if newStressValue < 0 then
-            newStressValue = 0
-        end
-        TriggerServerEvent("QBCore:Server:SetMetaData", "stress", newStressValue) 
-    end
-end
-
 --------------------- SERVER FUNCTIONS ---------------------
 
 function CreateCallback(...)
@@ -138,7 +124,7 @@ function CreateUseableItem(...)
 end
 
 -- Adds item to the players inventory
-function AddItem(source, name, amount, info)
+function AddItem(source, name, amount)
     if not IsDuplicityVersion() then return end
     if Config.Framework == 'esx' then
         local xPlayer = Core.GetPlayerFromId(source)
@@ -146,7 +132,7 @@ function AddItem(source, name, amount, info)
     elseif Config.Framework == 'qb' then
         local Player = Core.Functions.GetPlayer(source)
         TriggerClientEvent('inventory:client:ItemBox', source, Core.Shared.Items[name], "add")
-        return Player.Functions.AddItem(name, amount, nil, info) 
+        return Player.Functions.AddItem(name, amount) 
     end
 end
 
