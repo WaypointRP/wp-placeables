@@ -127,7 +127,7 @@ local chairCustomTargetOptions = {
 -- Uncomment this line if you are using wp-printer
 -- local printerCustomTargetOptions = {
 --     {
---         event = "wp-placeables:printer:client:UsePrinter",
+--         event = "wp-printer:client:UsePrinter",
 --         icon = "fas fa-print",
 --         label = "Use printer",
 --     },
