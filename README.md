@@ -162,6 +162,9 @@ Resource monitor results:
         ["lawnmower"] 			         = {["name"] = "lawnmower", 			        ["label"] = "Lawnmower", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "lawnmower.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Cuts grass"},
         ["toolchest"] 			         = {["name"] = "toolchest", 			        ["label"] = "Tool Chest", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "toolchest.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A sturdy toolchest"},
         ["carjack"] 			         = {["name"] = "carjack", 			            ["label"] = "Car jack", 			    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "carjack.png", 		        ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A car jack"},
+
+        -- Addon placeables
+	
         -----------------------
         -- END OF PLACEABLES --
         -----------------------
@@ -189,7 +192,7 @@ If you want to add or modify a placeable item, follow the below instructions.
 > All props will receive the pickup action by default.
 
 1. First determine what prop(s) you want to add. It is recommended to use a site such as [Pleb Masters: Forge](https://forge.plebmasters.de/objects) to find props and the model names.
-2. Add the new item to your items.lua file as you normally would
+2. Add the new item to your items.lua file as you normally would (_don't forget to add an image to your inventory script_)
 3. Add the item to the `Config.PlaceableProps` in config.lua
     - If the prop is just a simple prop with no custom options then all you need to do is add: `{item = "<itemName>", label = "<label", model = "<propModelName>", isFrozen = <true/false>}`.
         - Required Fields:
@@ -259,6 +262,8 @@ If you want to add or modify a placeable item, follow the below instructions.
 ![wp-placeables-screenshot4](https://github.com/WaypointRP/wp-placeables/assets/18689469/71d10a9d-3140-4f36-a45c-4a8cc1130709)
 
 ## Scripts that use Waypoint Placeables
-Checkout these scripts that use Waypoint Placeables!
+Checkout these addon scripts that use Waypoint Placeables!
 
 - [Waypoint Fireworks](https://backsh00ter.tebex.io/package/5753511)
+- [Waypoint Yogamats](https://github.com/WaypointRP/wp-yogamats)
+- [Waypoint Printer](https://github.com/WaypointRP/wp-printer)

@@ -64,6 +64,8 @@ local function setCustomTargetOptions(targetOptions, animationPushOptions, anima
     return customTargetOptions
 end
 
+-- Default target options
+
 local pushAndSitTargetOptions = {
     {
         event = "wp-placeables:client:pushObject",
@@ -103,6 +105,8 @@ local pushTargetOptions = {
     },
 }
 
+-- Define custom target options here for addon items
+
 local chairCustomTargetOptions = {
     {
         event = "qb-sit:sit",
@@ -110,6 +114,24 @@ local chairCustomTargetOptions = {
         label = "Sit down",
     },
 }
+
+-- Uncomment this line if you are using wp-yogamats
+-- local yogaCustomTargetOptions = {
+--     {
+--         event = "wp-yogamats:client:useYogaMat",
+--         icon = "fas fa-pray",
+--         label = "Do yoga",
+--     },
+-- }
+
+-- Uncomment this line if you are using wp-printer
+-- local printerCustomTargetOptions = {
+--     {
+--         event = "wp-printer:client:UsePrinter",
+--         icon = "fas fa-print",
+--         label = "Use printer",
+--     },
+-- }
 
 -- Add the props you want to be placeable here
 -- Every prop will have the "pickup" target option added by default (to override use customPickupEvent)
@@ -417,5 +439,21 @@ Config.PlaceableProps = {
         )
     },
 
+    -- ADDON ITEMS
+
+    -- Yogamats
+    -- Uncomment this line if you are using wp-yogamats
+    -- {item = "yogamat_blue", label = "Yoga mat (Blue)", model = "prop_yoga_mat_01", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    -- {item = "yogamat_black", label = "Yoga mat (Black)", model = "prop_yoga_mat_02", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+    -- {item = "yogamat_red", label = "Yoga mat (Red)", model = "prop_yoga_mat_03", isFrozen = true, customTargetOptions = yogaCustomTargetOptions},
+
+    -- Printers
+    -- Uncomment this line if you are using wp-printer
+    -- {item = "printer", label = "Printer", model = "prop_printer_01", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    -- {item = "printer2", label = "Printer", model = "prop_printer_02", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    -- {item = "printer3", label = "Printer", model = "v_res_printer", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    -- {item = "printer4", label = "Printer", model = "v_ret_gc_print", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    -- {item = "photocopier", label = "Photocopier", model = "v_med_cor_photocopy", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    
     -- ADD YOUR CUSTOM PROPS HERE
 }
