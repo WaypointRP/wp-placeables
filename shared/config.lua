@@ -133,6 +133,20 @@ local chairCustomTargetOptions = {
 --     },
 -- }
 
+-- Uncomment this line if you are using wp-fireworks
+-- local fireworkCustomTargetOptions = {
+--     {
+--         event = 'wp-fireworks:client:lightFireworkFuse',
+--         icon = "fa-solid fa-fire",
+--         label = "Light fuse"
+--     },
+--     {
+--         event = 'wp-fireworks:client:buildFireworkSequence',
+--         icon = 'fa-solid fa-link',
+--         label = 'Add to sequence'
+--     }
+-- }
+
 -- Add the props you want to be placeable here
 -- Every prop will have the "pickup" target option added by default (to override use customPickupEvent)
 -- REQUIRED FIELDS:
@@ -229,6 +243,36 @@ Config.PlaceableProps = {
     {item = "camp_chair_plaid", label = "Camp Chair (Plaid)", model = "prop_skid_chair_03", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
     {item = "plastic_chair", label = "Plastic Chair", model = "prop_chair_08", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
     {item = "folding_chair", label = "Folding Chair", model = "xm3_prop_xm3_folding_chair_01a", isFrozen = true, customTargetOptions = chairCustomTargetOptions},
+
+    -- Cargo props
+    {item = "cargobox1", label = "Large cardboardbox pallet", model = "prop_mb_cargo_03a", isFrozen = false},
+    {item = "cargobox2", label = "Large mixed pallet", model = "prop_mb_cargo_02a", isFrozen = false},
+    {item = "cargobox3", label = "Tall wrapped pallet", model = "hei_prop_carrier_cargo_04b", isFrozen = false},
+    {item = "cargobox4", label = "Cardboardboxes pallet", model = "prop_boxpile_02c", isFrozen = false},
+    {item = "cargobox5", label = "Sprunk boxes pallet", model = "prop_boxpile_03a", isFrozen = false},
+    {item = "cargobox6", label = "Cardboardboxes wrapped", model = "prop_boxpile_04a", isFrozen = false},
+    {item = "cargobox7", label = "Cardboardboxes fragile", model = "prop_boxpile_06a", isFrozen = false},
+    {item = "cargobox8", label = "Cardboardboxes + keg", model = "prop_boxpile_09a", isFrozen = false},
+    {item = "pallet1", label = "Empty pallet", model = "prop_pallet_01a", isFrozen = false},
+    {item = "pallet2", label = "Fertilizer pallet", model = "bkr_prop_fertiliser_pallet_01a", isFrozen = false},
+    {item = "pallet3", label = "Weed bricks pallet", model = "hei_prop_heist_weed_pallet", isFrozen = false},
+    {item = "pallet4", label = "Barrell pallet", model = "xm3_prop_xm3_pallet_ch_01a", isFrozen = false},
+    {item = "pallet5", label = "Slotmachine pallet", model = "sf_prop_sf_slot_pallet_01a", isFrozen = false},
+    {item = "crate1", label = "Gopostal crate", model = "prop_box_wood03a", isFrozen = false},
+    {item = "crate2", label = "Wood crate", model = "prop_box_wood04a", isFrozen = false},
+    {item = "crate3", label = "Cluckinbell crate", model = "vw_prop_vw_boxwood_01a", isFrozen = false},
+    {item = "crate4", label = "Water crate", model = "prop_watercrate_01", isFrozen = false},
+    {item = "crate5", label = "Animal cage", model = "v_med_apecrate", isFrozen = false},
+
+    -- Xmas props
+    {item = "snowman1", label = "Snowman (Red)", model = "xm3_prop_xm3_snowman_01a", isFrozen = true},
+    {item = "snowman2", label = "Snowman (Blue)", model = "xm3_prop_xm3_snowman_01b", isFrozen = true},
+    {item = "snowman3", label = "Snowman (Green)", model = "xm3_prop_xm3_snowman_01c", isFrozen = true},
+    {item = "snowman4", label = "Snowman", model = "prop_prlg_snowpile", isFrozen = true},
+    {item = "xmastree1", label = "Giant Xmas Tree", model = "prop_xmas_ext", isFrozen = true},
+    {item = "xmastree2", label = "Xmas Tree", model = "prop_xmas_tree_int", isFrozen = true},
+    {item = "candycane", label = "Candy Cane", model = "w_me_candy_xm3", isFrozen = true},
+    {item = "xmaspresent", label = "Xmas Present", model = "xm3_prop_xm3_present_01a", isFrozen = true},
 
     -- Misc props
     {item = "greenscreen", label = "Green Screen", model = "prop_ld_greenscreen_01", isFrozen = true},
@@ -454,6 +498,19 @@ Config.PlaceableProps = {
     -- {item = "printer3", label = "Printer", model = "v_res_printer", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
     -- {item = "printer4", label = "Printer", model = "v_ret_gc_print", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
     -- {item = "photocopier", label = "Photocopier", model = "v_med_cor_photocopy", isFrozen = true, customTargetOptions = printerCustomTargetOptions},
+    
+    -- Fireworks
+    -- Uncomment this line if you are using wp-fireworks
+    -- {item = "finalefirework1",   label = "Finale Firework (White)", model = "bzzz_prop_fireworks_a", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "finalefirework2",   label = "Finale Firework (Colored)", model = "bzzz_prop_fireworks_a", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "finalefirework3",   label = "Finale Firework (USA)", model = "bzzz_prop_fireworks_a", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "fountainfirework1", label = "Fountain Firework (White)", model = "ind_prop_firework_03", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "fountainfirework2", label = "Fountain Firework (Colored)", model = "ind_prop_firework_03", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "fountainfirework3", label = "Fountain Firework (USA)", model = "ind_prop_firework_03", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "missilefirework1",  label = "Missile Firework (White)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "missilefirework2",  label = "Missile Firework (Colored)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "missilefirework3",  label = "Missile Firework (USA)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
+    -- {item = "strobefirework",    label = "Strobe Firework", model = "bzzz_prop_fireworks_b", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
     
     -- ADD YOUR CUSTOM PROPS HERE
 }
