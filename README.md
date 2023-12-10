@@ -26,6 +26,7 @@ When in placement mode, the player is able to position the prop in a radius arou
 - Shift + E - Attempts to snap the prop to the ground
 - Scroll Wheel Up/Down - Rotates the item
 - Shift + Scroll Wheel Up/Down - Raises or lowers the item
+- Scroll Wheel Click - Change placement mode (changes the raycast to only detect world or everything)
 - Right click / backspace - Exit placement mode without placing the item
 
 > While in placement mode the script will run at about 0.09ms - 0.1ms. This is primarily because we are using Raycast natives and have to run a quick thread to capture all of the players keypresses and movements. As soon as placement mode is exited, the script will return to 0.0ms.

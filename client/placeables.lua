@@ -26,7 +26,7 @@ end
 
 -- Uses a RayCast to get the entity, coords, and whether we "hit" something with the raycast
 -- Object passed in, is the current object that we want the raycast to ignore
-local function RayCastGamePlayCamera(distance, object)
+local function RayCastGamePlayCamera(distance, object, raycastDetectWorldOnly)
     local cameraRotation = GetGameplayCamRot()
 	local cameraCoord = GetGameplayCamCoord()
 	local direction = RotationToDirection(cameraRotation)
@@ -36,7 +36,13 @@ local function RayCastGamePlayCamera(distance, object)
 		z = cameraCoord.z + direction.z * distance
 	}
 
-    local traceFlag = 1 -- 1 means the raycast will only intersect with the world (ignoring other entities like peds, cars, etc)
+    -- Trace flag 4294967295 means the raycast will intersect with everything (including vehicles)
+    -- Trace flag 1 means the raycast will only intersect with the world (ignoring other entities like peds, cars, etc)
+    local traceFlag = 4294967295
+    if raycastDetectWorldOnly then
+        traceFlag = 1
+    end
+
 	local a, hit, coords, d, entity = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, traceFlag, object, 0))
 	return hit, coords, entity
 end
@@ -149,18 +155,20 @@ local function startItemPlacementMode(item)
 
     local zOffset = 0
 
+    -- This is used to determine if the raycast should only detect the world or if it should detect everything (including vehicles)
+    local raycastDetectWorldOnly = true
+
     CreateThread(function()
         while isInPlaceItemMode do
             -- Use raycast based on where the camera is pointed
-            local hit, coords, entity = RayCastGamePlayCamera(Config.ItemPlacementModeRadius, obj)
+            local hit, coords, entity = RayCastGamePlayCamera(Config.ItemPlacementModeRadius, obj, raycastDetectWorldOnly)
 
             -- Move the object to the coords from the raycast
             SetEntityCoords(obj, coords.x, coords.y, coords.z + zOffset)
 
             -- Display the controls
             Draw2DText('[E] Place\n[Shift+E] Place on ground\n[Scroll Up/Down] Rotate\n[Shift+Scroll Up/Down] Raise/lower', 4, {255, 255, 255}, 0.4, 0.85, 0.85)
-            Draw2DText('[Right Click / Backspace] Exit place mode', 4, {255, 255, 255}, 0.4, 0.85, 0.945)
-
+            Draw2DText('[Scroll Click] Change mode\n[Right Click / Backspace] Exit place mode', 4, {255, 255, 255}, 0.4, 0.85, 0.945)
 
             -- Handle various key presses and actions
 
@@ -217,6 +225,11 @@ local function startItemPlacementMode(item)
                 if zOffset < Config.minZOffset then
                     zOffset = Config.minZOffset
                 end
+            end
+
+            -- Mouse Wheel Click, change placement mode
+            if IsControlJustReleased(0, 348) then
+                raycastDetectWorldOnly = not raycastDetectWorldOnly
             end
 
             -- Right click or Backspace to exit out of placement mode and delete the local object
