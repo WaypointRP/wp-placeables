@@ -202,9 +202,11 @@ Resource monitor results:
         -----------------------
         ```
     </details>
-3. Add the images from `/images` to your inventory scripts
-4. Add a way for players to acquire these new items (ex: add them to a shop, make them craftable, rewards for jobs, etc)
-5. If you want an item to be useable by players that are dead (such as a hospitalbed), you will need to make an update to qb-ambulancejob. Ambulancejob script has a thread that will continually run to put you back into the death animation. Look for the thread that has a check for `if not IsEntityPlayingAnim(ped, deadAnimDict, deadAnim, 3) then` and update it to the following:
+3. Add the images from `images/` to your inventory scripts
+4. Update the Config framework variables to match the framework you are using
+    - Most actions are set to support QB, OX, and ESX by default. If you are using a different framework, you will need to update the functions in `framework.lua` to match your framework. Feel free to submit a PR to get support for your framework added to the main repo, so others can leverage it as well.
+5. Add a way for players to acquire these new items (ex: add them to a shop, make them craftable, rewards for jobs, etc)
+6. If you want an item to be useable by players that are dead (such as a hospitalbed), you will need to make an update to qb-ambulancejob. Ambulancejob script has a thread that will continually run to put you back into the death animation. Look for the thread that has a check for `if not IsEntityPlayingAnim(ped, deadAnimDict, deadAnim, 3) then` and update it to the following:
     ```lua
         -- This resets the player back into the dead animation and runs it on a fast loop
         -- If the player is sitting on a placeable prop, we dont want to reset the animation or it will kick them off of the prop
@@ -216,7 +218,6 @@ Resource monitor results:
             TaskPlayAnim(ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, 0, 0, 0)
         end
     ```
-6. If using a framework other than QBCore or ESX, you can use the framework.lua file to add the framework specific implementations. Feel free to submit a PR to get support for your framework added to the main repo, so others can leverage it as well.
 
 ## Adding a new placeable item
 If you want to add or modify a placeable item, follow the below instructions.
@@ -279,13 +280,18 @@ If you want to add or modify a placeable item, follow the below instructions.
 > Ensure `item` matches the item you added in step 1
 
 ## Optional
-- If you want to enable logging for the placement/pickup of items, you just need to capture the logging event for `itemplacement`. We use the following event for capturing the logs: `TriggerServerEvent("qb-log:server:CreateLog", "itemplacement", "Item "..action.." By:", color, logMessage)`
+
+**Logging:**
+- If you want to enable logging for the placement/pickup of items, set `Config.Log` equal to the logging framework you use, set as `'none'` if you do not want logs. Currently supports qb-logs by default. Modify the `CreateLog()` function in framework.lua to add support for your logging framework.
 
 
 ## Dependencies
-- QBCore / ESX / Or other frameworks (must implement framework specific solutions in framework.lua)
-- QBCore / ESX / OX for Notifications
-- QB-target or equivalent script
+- Framework: QBCore / ESX / Or other frameworks (_must implement framework specific solutions in framework.lua_)
+- Inventory: QBCore / ESX / OX / or equivalent
+- Notifications: QBCore / ESX / OX / or equivalent
+- Target: qb-target / ox-target or equivalent script
+
+> If you are using a different script/framework than what we provide by default, simply add your solution to the framework.lua file, all framework specific logic is in this file. 
 
 ## Gallery
 ![wp-placeables-screenshot1](https://github.com/WaypointRP/wp-placeables/assets/18689469/0dda029f-3e62-4492-adf0-e8d77ad89994)

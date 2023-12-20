@@ -5,12 +5,12 @@ Config = {}
 -- If the framework you are using is not listed, you will need to modify the framework.lua code to work with your framework
 -- Note: If using ox for any option, enable @ox_lib/init.lua in the manifest!
 
-Config.Framework = 'qb' -- 'qb', 'esx'
-Config.Notify = 'qb' -- 'qb', 'esx', 'ox' 
-Config.Target = 'qb' -- 'qb', 'ox'
-Config.Inventory = 'qb' -- 'qb', 'esx', 'ox'
-Config.ProgessBar = 'qb' -- 'qb', 'ox', 'none'
-Config.Log = 'qb' -- 'qb', 'none'
+Config.Framework = 'qb'     -- 'qb', 'esx'
+Config.Notify = 'qb'        -- 'qb', 'esx', 'ox' 
+Config.Target = 'qb'        -- 'qb', 'ox'
+Config.Inventory = 'qb'     -- 'qb', 'esx', 'ox'
+Config.ProgessBar = 'qb'    -- 'qb', 'ox', 'none'
+Config.Log = 'qb'           -- 'qb', 'none'
 
 Config.ItemPlacementModeRadius = 10.0 -- Object can only be placed within this radius of the player
 
