@@ -81,18 +81,65 @@ end
 
 -- Triggers a progressbar on the client
 -- This uses the same method signature as QBCore Progressbar
-function Progressbar(...)
+---@param name string The name of the progressbar
+---@param label string The label to show on the progressbar
+---@param duration number The duration of the progressbar
+---@param useWhileDead boolean Whether or not the progressbar should be used while dead
+---@param canCancel boolean Whether or not the progressbar can be cancelled
+---@param disableControls table Contains the controls to disable while the progressbar is active (disableMovement, disableCarMovement, disableMouse, disableCombat)
+---@param animation table Contains the animation to play while the progressbar is active (animDict, anim, flags)
+---@param prop table Contains the prop to show while the progressbar is active (model, bone, coords, rotation)
+---@param propTwo table Contains the prop to show while the progressbar is active (model, bone, coords, rotation)
+---@param onFinish function The callback function to call when the progressbar finishes
+---@param onCancel function The callback function to call when the progressbar is cancelled
+function Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)
     if IsDuplicityVersion() then return end
-    if Config.Framework == 'esx' then
-        -- TODO: Implement ESX progressbar, until then we'll just fallback to directly calling the callback
-        -- We pass in all the args as ... and pass forward to the calling function
-        -- Since we dont yet have a progressbar implementation, directly call the callback to place the item
-        -- The callback is the 10th arg in the list of args XD
-        local args = {...}
-        local _, _, _, _, _, _, _, _, _, callback = table.unpack(args)
-        callback()
-    elseif Config.Framework == 'qb' then
-        return Core.Functions.Progressbar(...)
+    if Config.ProgessBar == 'none' then
+        onFinish()
+    elseif Config.ProgessBar == 'qb' then
+        return Core.Functions.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)
+    elseif Config.ProgessBar == 'ox' then
+        local props = {}
+        if prop then
+            props[1] = {
+                model = prop.model,
+                bone = prop.bone,
+                coords = prop.coords,
+                rotation = prop.rotation,
+            }
+        end
+        if propTwo then
+            props[2] = {
+                model = propTwo.model,
+                bone = propTwo.bone,
+                coords = propTwo.coords,
+                rotation = propTwo.rotation,
+            }
+        end
+
+        if lib.progressBar({
+            name = name,
+            label = label,
+            duration = duration,
+            useWhileDead = useWhileDead,
+            canCancel = canCancel,
+            disable = {
+                move = disableControls.disableMovement,
+                car = disableControls.disableCarMovement,
+                mouse = disableControls.disableMouse,
+                combat = disableControls.disableCombat,
+            },
+            anim = {
+                dict = animation.animDict,
+                clip = animation.anim,
+                flag = animation.flags,
+            },
+            prop = props,
+        }) then
+            onFinish()
+        else
+            onCancel()
+        end
     end
 end
 
@@ -104,8 +151,31 @@ function AddTargetModel(modelName, targetOptions)
     if IsDuplicityVersion() then return end
     if Config.Target == 'qb' then
         exports['qb-target']:AddTargetModel(modelName, targetOptions)
+    elseif Config.Target == 'ox' then
+        exports.ox_target:addModel(modelName, targetOptions)
     else
-        -- TODO: Implement support for other target scripts
+        print('Missing target implementation for wp-placeables')
+    end
+end
+
+-- Creates a log entry when an item is placed or picked up
+---@param itemName string The name of the item that was placed or picked up
+---@param isItemPlaced boolean True if the item was placed, false if the item was picked up
+function CreateLog(itemName, isItemPlaced)
+    if IsDuplicityVersion() or Config.Log == 'none' then return end
+
+    local playerId = PlayerId()
+    local playerName = GetPlayerName(playerId)
+    local PlayerData = GetPlayerData()
+    local color = isItemPlaced and "red" or "green"
+    local action = isItemPlaced and "Placed" or "Picked up"
+    local logMessage = "**" .. playerName .. "** (".. PlayerData.charinfo.firstname.." "..PlayerData.charinfo.lastname..") | CitizenId: "..PlayerData.citizenid.."\n Item Name: "..itemName
+    
+    if Config.Log == 'qb' then
+        -- Be sure to add the 'itemplacement' entry to the qb-log config
+        TriggerServerEvent("qb-log:server:CreateLog", "itemplacement", "Item "..action.." By:", color, logMessage)
+    else
+        print('Missing log implementation for wp-placeables!')
     end
 end
 
@@ -130,27 +200,37 @@ function CreateUseableItem(...)
 end
 
 -- Adds item to the players inventory
-function AddItem(source, name, amount)
+---@param source number The source of the player
+---@param itemName string The name of the item to add
+---@param amount number The amount of the item to add
+function AddItem(source, itemName, amount)
     if not IsDuplicityVersion() then return end
-    if Config.Framework == 'esx' then
+    if Config.Inventory == 'esx' then
         local xPlayer = Core.GetPlayerFromId(source)
-        return xPlayer.addInventoryItem(name, amount)
-    elseif Config.Framework == 'qb' then
+        return xPlayer.addInventoryItem(itemName, amount)
+    elseif Config.Inventory == 'qb' then
         local Player = Core.Functions.GetPlayer(source)
-        TriggerClientEvent('inventory:client:ItemBox', source, Core.Shared.Items[name], "add")
-        return Player.Functions.AddItem(name, amount) 
+        TriggerClientEvent('inventory:client:ItemBox', source, Core.Shared.Items[itemName], "add")
+        return Player.Functions.AddItem(itemName, amount) 
+    elseif Config.Inventory == 'ox' then
+        exports.ox_inventory:AddItem(source, itemName, amount)
     end
 end
 
 -- Removes item from the players inventory
-function RemoveItem(source, name, amount)
+---@param source number The source of the player
+---@param itemName string The name of the item to remove
+---@param amount number The number of items to remove
+function RemoveItem(source, itemName, amount)
     if not IsDuplicityVersion() then return end
-    if Config.Framework == 'esx' then
+    if Config.Inventory == 'esx' then
         local xPlayer = Core.GetPlayerFromId(source)
-        return xPlayer.removeInventoryItem(name, amount)
-    elseif Config.Framework == 'qb' then
+        return xPlayer.removeInventoryItem(itemName, amount)
+    elseif Config.Inventory == 'qb' then
         local Player = Core.Functions.GetPlayer(source)
-        TriggerClientEvent('inventory:client:ItemBox', source, Core.Shared.Items[name], "remove")
-        return Player.Functions.RemoveItem(name, amount)
+        TriggerClientEvent('inventory:client:ItemBox', source, Core.Shared.Items[itemName], "remove")
+        return Player.Functions.RemoveItem(itemName, amount)
+    elseif Config.Inventory == 'ox' then
+        exports.ox_inventory:RemoveItem(source, itemName, amount)
     end
 end

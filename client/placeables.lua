@@ -61,19 +61,6 @@ local function Draw2DText(content, font, colour, scale, x, y)
     DrawText(x, y)
 end
 
-local function createLog(itemName, isItemPlaced)
-    local PlayerData = GetPlayerData()
-    local player = PlayerId()
-    local logMessage = "**" .. GetPlayerName(player) .. "** (".. PlayerData.charinfo.firstname.." "..PlayerData.charinfo.lastname..") | CitizenId: "..PlayerData.citizenid.."\n Item Name: "..itemName
-    local color = "red" 
-    local action = "Placed" 
-    if not isItemPlaced then 
-        color = "green"
-        action = "Picked Up"
-    end
-    TriggerServerEvent("qb-log:server:CreateLog", "itemplacement", "Item "..action.." By:", color, logMessage)
-end
-
 -- This handles placing the actual item that is network synced
 local function placeItem(item, coords, heading, shouldSnapToGround)
     local ped = PlayerPedId()
@@ -124,7 +111,7 @@ local function placeItem(item, coords, heading, shouldSnapToGround)
                 Entity(obj).state:set('itemNameOverride', itemName, true)
             end
 
-            createLog(itemName, true) 
+            CreateLog(itemName, true) 
         end
 
         SetModelAsNoLongerNeeded(itemModel)
@@ -288,7 +275,7 @@ local function pickUpItem(itemData)
             local object = {coords = coords, model = itemModel}
             TriggerServerEvent("wp-placeables:server:deleteWorldObject", object)
 
-            createLog(itemName, false)
+            CreateLog(itemName, false)
         end, function() -- Cancel
             StopAnimTask(ped, animationDict, animation, 1.0)
             Notify("Canceled..", "error")
