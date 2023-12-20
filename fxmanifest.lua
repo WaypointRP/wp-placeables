@@ -3,10 +3,10 @@ game 'gta5'
 
 description 'Waypoint Placeables'
 author 'BackSH00TER - Waypoint RP'
-version '1.0.4'
+version '1.0.5'
 
 shared_script {
-    -- '@ox_lib/init.lua', -- Uncomment this if you are planning to use any ox scripts (such as ox notify)
+    -- '@ox_lib/init.lua', -- Uncomment this if you are planning to integrate with any ox scripts
     'shared/config.lua',
     'shared/framework.lua',
 }
