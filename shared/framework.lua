@@ -145,14 +145,19 @@ end
 
 -- Takes a prop model and the targetOptions and adds it to the target script so that this prop model is targetable
 ---@param model string The name of the prop model to target
----@param targetOptions table The options to pass to the target script
----        ex: options: { offset = { x = 0.0, y = 0.0, z = 0.0 }, rotation = { x = 0.0, y = 0.0, z = 0.0 } , animationDict = "", animationName = "" }
+---@param targetOptions table The options to pass to the target script 
+---        ex: targetOptions = { distance = num, options: { offset = { x = 0.0, y = 0.0, z = 0.0 }, rotation = { x = 0.0, y = 0.0, z = 0.0 } , animationDict = "", animationName = "" } }
 function AddTargetModel(modelName, targetOptions)
     if IsDuplicityVersion() then return end
     if Config.Target == 'qb' then
         exports['qb-target']:AddTargetModel(modelName, targetOptions)
     elseif Config.Target == 'ox' then
-        exports.ox_target:addModel(modelName, targetOptions)
+        -- ox target expects each option to have a distance on it,
+        -- Append the distance value to each option
+        for _, option in pairs(targetOptions.options) do
+            option.distance = targetOptions.distance
+        end
+        exports.ox_target:addModel(modelName, targetOptions.options)
     else
         print('Missing target implementation for wp-placeables')
     end
