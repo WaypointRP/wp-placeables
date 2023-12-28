@@ -305,3 +305,4 @@ Checkout these addon scripts that use Waypoint Placeables!
 - [Waypoint Fireworks](https://backsh00ter.tebex.io/package/5753511)
 - [Waypoint Yogamats](https://github.com/WaypointRP/wp-yogamats)
 - [Waypoint Printer](https://github.com/WaypointRP/wp-printer)
+- [Waypoint Traffic Lights](https://github.com/WaypointRP/wp-trafficlights)
