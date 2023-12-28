@@ -155,6 +155,18 @@ local chairCustomTargetOptions = {
 --     }
 -- }
 
+-- Uncomment this line if you are using wp-trafficlights
+-- local trafficLightCustomTargetOptions = {
+--     {
+--         event = "wp-trafficlights:client:OpenMenu",
+--         icon = "fas fa-traffic-light",
+--         label = "Remote control traffic light",
+--     },
+-- }
+
+-- Uncomment this line if you are using wp-trafficlights
+-- local trafficLightCustomPickupEvent = "wp-trafficlights:RemoveTrafficLight"
+
 -- Add the props you want to be placeable here
 -- Every prop will have the "pickup" target option added by default (to override use customPickupEvent)
 -- REQUIRED FIELDS:
@@ -520,5 +532,9 @@ Config.PlaceableProps = {
     -- {item = "missilefirework3",  label = "Missile Firework (USA)", model = "ind_prop_firework_04", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
     -- {item = "strobefirework",    label = "Strobe Firework", model = "bzzz_prop_fireworks_b", isFrozen = true, customTargetOptions = fireworkCustomTargetOptions},
     
+    -- Traffic lights
+    -- Uncomment this line if you are using wp-trafficlights
+    -- {item = "trafficlight", label= "Traffic light", model = "prop_traffic_03a", isFrozen = true, customTargetOptions = trafficLightCustomTargetOptions, customPickupEvent = trafficLightCustomPickupEvent},
+
     -- ADD YOUR CUSTOM PROPS HERE
 }
