@@ -2,7 +2,7 @@ local animationDict = "pickup_object"
 local animation = "pickup_low"
 local isInPlaceItemMode = false
 
--- Keeps track of the models that have already been set with target options, ensuring we don't set create duplicate options for the same model
+-- Keeps track of the models that have already been set with target options, ensuring we don't create duplicate options for the same model
 -- In some frameworks like OX, if you create targetOptions on a model that already has it, it will append the options, whereas
 -- in QB it will override and only the last set of options will be used. We just need to add one option to the target model and then
 -- the pickup event will use the statebag to determine the correct item to give back to the player
