@@ -236,8 +236,6 @@ If you want to add or modify a placeable item, follow the below instructions.
         - Optional Fields:
             - `customTargetOptions` - use this if you want to add more options than just picking up the item
             - `customPickupEvent` - use this if you want to add a custom event to be called when the item is picked up, rather than using the default handler
-            - `shouldUseItemNameState` - use this if you want to use the same prop model for multiple items.
-                - _AddTargetModel only supports one set of options per model, so this flag is necessary to use a statebag property instead._
     - If you want to put custom actions on the prop, then you will also need to include the `customTargetOptions`.
         ```lua
         local exampleCustomTargetOptions = {
