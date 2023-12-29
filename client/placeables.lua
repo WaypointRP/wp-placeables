@@ -2,6 +2,12 @@ local animationDict = "pickup_object"
 local animation = "pickup_low"
 local isInPlaceItemMode = false
 
+-- Keeps track of the models that have already been set with target options, ensuring we don't set create duplicate options for the same model
+-- In some frameworks like OX, if you create targetOptions on a model that already has it, it will append the options, whereas
+-- in QB it will override and only the last set of options will be used. We just need to add one option to the target model and then
+-- the pickup event will use the statebag to determine the correct item to give back to the player
+local targetModels = {}
+
 local function LoadPropDict(model)
     while not HasModelLoaded(GetHashKey(model)) do
         RequestModel(GetHashKey(model))
@@ -104,12 +110,10 @@ local function placeItem(item, coords, heading, shouldSnapToGround)
                 PlaceObjectOnGroundProperly(obj)
             end
 
-            -- Use statebag property itemNameOverride if `shouldUseItemNameState` is true for the item (defined in items.lua)
-            -- This is used for items that use the same model, but need to grant different items when picked up
-            -- This is necessary because we use AddTargetModel to provide the options per model and can only apply one set of options per model
-            if item.shouldUseItemNameState then
-                Entity(obj).state:set('itemNameOverride', itemName, true)
-            end
+            -- Use statebag property itemName to set the itemName on the entity.
+            -- This value is used to grant the correct item back to the player when they pick it up.
+            -- It also solves the issue of the same model being used for multiple items
+            Entity(obj).state:set('itemName', itemName, true)
 
             CreateLog(itemName, true) 
         end
@@ -234,8 +238,11 @@ end
 local function pickUpItem(itemData)
     local ped = PlayerPedId()
     local itemEntity = itemData.entity
-    local itemName = itemData.itemName
     local itemModel = itemData.itemModel
+
+    -- When picking up the item, try to get the itemName from the statebag property first, else fallback to the itemName from the itemData provided by the target script
+    -- Using the statebag property ensures we get the correct item name if the prop model is shared by multiple items..
+    local itemName = Entity(itemEntity).state.itemName or itemData.itemName
 
     if itemName then
         -- Cancel any active animation
@@ -253,13 +260,6 @@ local function pickUpItem(itemData)
         }, nil, nil, function() -- Done
             -- Stop playing the animation
             StopAnimTask(ped, animationDict, animation, 1.0)
-
-            -- When picking up the item, check if it has a state.itemNameOverride and use that instead of itemName
-            -- This is used for items that share a prop model, but are different items. By using the statebag override name instead,
-            -- we make sure the player gets the correct item back when they pick it up.
-            if Entity(itemEntity).state.itemNameOverride then
-                itemName = Entity(itemEntity).state.itemNameOverride
-            end
 
             -- Add the item to the inventory
             TriggerServerEvent("wp-placeables:server:AddItem", itemName)
@@ -322,13 +322,18 @@ for _, prop in pairs(Config.PlaceableProps) do
             targetOptions[#targetOptions + 1] = customOption
         end
     end
-
-    -- A model can only have one set of options, so if the model is defined twice, only the last one will be used
-    -- If you want to reuse a model, you can use the shouldUseItemNameState flag on the item which enable it to use the state.itemNameOverride
-    AddTargetModel(prop.model, {
-        options = targetOptions,
-        distance = 1.5
-    })
+    
+    -- Make sure we only define the target options once for each model
+    -- If you define the same model twice:
+    --      In qb-target, it will override the options, and the last one defined is used
+    --      In ox_target, it will append the options, resulting in N duplicate options
+    if not targetModels[prop.model] then
+        AddTargetModel(prop.model, {
+            options = targetOptions,
+            distance = 1.5  
+        })
+        targetModels[prop.model] = true
+    end
 end
 
 -- Delete the world object

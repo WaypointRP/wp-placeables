@@ -177,7 +177,6 @@ local chairCustomTargetOptions = {
 --- OPTIONAL FIELDS:
 ---@param customTargetOptions: Custom target options for this item, if it should do more than just pickup
 ---@param customPickupEvent: If you want to override the default pickup event, set this to the event you want to be called when the "pickup" target option is used
----@param shouldUseItemNameState: Only need to set this to true if you want to have multiple items use the same prop model. Otherwise you do not need to define it
 Config.PlaceableProps = {
     -- Constructions props
     {item = "roadworkbarrier", label = "Road Work Ahead Barrier", model = "prop_barrier_work04a", isFrozen = true},
