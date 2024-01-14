@@ -304,6 +304,7 @@ Checkout these addon scripts that use Waypoint Placeables!
 - [Waypoint Yogamats](https://github.com/WaypointRP/wp-yogamats)
 - [Waypoint Printer](https://github.com/WaypointRP/wp-printer)
 - [Waypoint Traffic Lights](https://github.com/WaypointRP/wp-trafficlights)
+- [Waypoint Seats](https://github.com/WaypointRP/wp-seats)
 
 ## Credit
 @DonHulieo for providing insipiration and examples for structuring the framework.lua file.
