@@ -892,6 +892,8 @@ Resource monitor results:
         end
     ```
 
+> Note: If you are using `ox` for any of the Framework options you need to uncomment `@ox_lib/init.lua` in the fxmanifest.lua.
+
 ## Adding a new placeable item
 If you want to add or modify a placeable item, follow the below instructions.
 
