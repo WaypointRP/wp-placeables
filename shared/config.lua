@@ -115,9 +115,10 @@ local pushTargetOptions = {
 
 -- Define custom target options here for addon items
 
+-- Uncomment this line if you are using wp-seats
 local chairCustomTargetOptions = {
     {
-        event = "qb-sit:sit",
+        event = "wp-seats:client:sitOnChair",
         icon = "fas fa-chair",
         label = "Sit down",
     },
