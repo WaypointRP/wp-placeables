@@ -20,16 +20,16 @@ local function PushableObjectAttachedThread(animDict, anim)
     CreateThread(function()
         while isAttached do
             -- Disables attacking controls
-            DisableControlAction(0, 24, true) -- disable attack
-            DisableControlAction(0, 25, true) -- disable aim
-            DisableControlAction(0, 47, true) -- disable weapon
-            DisableControlAction(0, 58, true) -- disable weapon
+            DisableControlAction(0, 24, true)  -- disable attack
+            DisableControlAction(0, 25, true)  -- disable aim
+            DisableControlAction(0, 47, true)  -- disable weapon
+            DisableControlAction(0, 58, true)  -- disable weapon
             DisableControlAction(0, 263, true) -- disable melee
             DisableControlAction(0, 264, true) -- disable melee
             DisableControlAction(0, 257, true) -- disable melee
             DisableControlAction(0, 140, true) -- disable melee
             DisableControlAction(0, 141, true) -- disable melee
-            DisableControlAction(0,142, true) -- disable melee
+            DisableControlAction(0, 142, true) -- disable melee
             DisableControlAction(0, 143, true) -- disable melee
 
             -- Check to see if animation is still playing, if not then put the player back in the animation
@@ -46,7 +46,7 @@ local function PushableObjectAttachedThread(animDict, anim)
                 ReleasePushableObject()
             end
 
-            Wait(5) -- Needs to be a small number so that player doesnt need to spam press E to get it to take  
+            Wait(5) -- Needs to be a small number so that player doesnt need to spam press E to get it to take
         end
     end)
 end
@@ -55,7 +55,7 @@ end
 local function PushObject(data)
     local PlayerPed = PlayerPedId()
 
-    pushableObject =  data.entity
+    pushableObject = data.entity
 
     if pushableObject then
         local netId = NetworkGetNetworkIdFromEntity(pushableObject)
@@ -82,10 +82,10 @@ local function PushObject(data)
                 rotation.z,
                 false, -- p9
                 false, -- usesoftpinner
-                true, -- collision
+                true,  -- collision
                 false, -- isPed
-                2, -- rotationorder
-                true -- fixrot
+                2,     -- rotationorder
+                true   -- fixrot
             )
 
             PushableObjectAttachedThread(data.animationPushOptions.animationDict, data.animationPushOptions.animationName)
@@ -122,9 +122,9 @@ local function SitOnObject(data)
                 false, -- p9
                 false, -- usesoftpinner
                 false, -- collision -- if this is true, then the peds body will collide with things as you push it around
-                true, -- isPed
-                2, -- rotationorder
-                true -- fixrot
+                true,  -- isPed
+                2,     -- rotationorder
+                true   -- fixrot
             )
 
             PushableObjectAttachedThread(data.animationSitOptions.animationDict, data.animationSitOptions.animationName)
@@ -132,7 +132,7 @@ local function SitOnObject(data)
     end
 end
 
-AddEventHandler('onResourceStop', function(resource)
+AddEventHandler("onResourceStop", function(resource)
     if resource == GetCurrentResourceName() then
         if pushableObject then
             ReleasePushableObject()
@@ -142,15 +142,15 @@ AddEventHandler('onResourceStop', function(resource)
     end
 end)
 
-RegisterNetEvent('wp-placeables:client:pushObject', function(data)
+RegisterNetEvent("wp-placeables:client:pushObject", function(data)
     PushObject(data)
 end)
 
-RegisterNetEvent('wp-placeables:client:sitOnObject', function(data)
+RegisterNetEvent("wp-placeables:client:sitOnObject", function(data)
     SitOnObject(data)
 end)
 
 local function IsPlayerSittingOnPlaceableProp()
     return isSittingOnObject
 end
-exports('IsPlayerSittingOnPlaceableProp', IsPlayerSittingOnPlaceableProp)
+exports("IsPlayerSittingOnPlaceableProp", IsPlayerSittingOnPlaceableProp)
