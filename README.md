@@ -43,7 +43,7 @@ Resource monitor results:
 1. Enable the script in your server.cfg
 2. Add the items to your items.lua file
     <details>
-    <summary>Items</summary>
+    <summary>Items (qb-inventory)</summary>
 
         ```lua
         ------------------
@@ -200,6 +200,999 @@ Resource monitor results:
         -----------------------
         -- END OF PLACEABLES --
         -----------------------
+        ```
+    </details>
+
+    <details>
+    <summary>Items (ox_inventory)</summary>
+        ```lua
+        -- PLACEABLE ITEMS
+        ['roadworkbarrier'] = {
+            label = "Road Work Ahead Barrier",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A construction 'Road Work Ahead' barrier",
+            client = {
+                image = 'roadworkahead.png',
+            }
+        },
+        ['roadclosedbarrier'] = {
+            label = "Road Closed Barrier",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A construction 'Road Closed' barrier"
+        },
+        ['constructionbarrier'] = {
+            label = "Fold-out Barrier",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A small construction barrier"
+        },
+        ['constructionbarrier2'] = {
+            label = "Construction Barrier",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medium-sized construction barrier"
+        },
+        ['constructionbarrier3'] = {
+            label = "Construction Barrier",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medium-sized construction barrier"
+        }, 
+        ['roadconebig'] = {
+            label = "Road Cone Big",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A big road cone"
+        },
+        ['roadcone'] = {
+            label = "Road Cone",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A road cone"
+        },
+        ['roadpole'] = {
+            label = "Road Pole",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A road pole"
+        }, 
+        ['worklight'] = {
+            label = "Work light stand",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A tall worklight"
+        },
+        ['worklight2'] = {
+            label = "Work light stand",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A tall worklight"
+        },
+        ['worklight3'] = {
+            label = "Work light",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A worklight"
+        },
+        ['constructiongenerator'] = {
+            label = "Construction Generator",
+            weight = 2000,
+            stack = true,
+            close = true,
+            description = "A generator with lights"
+        },
+        ['trafficdevice'] = {
+            label = "Traffic Device (Left)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A traffic sign with an arrow pointing left",
+            client = {
+                image = 'trafficdevice.png',
+            }
+        },
+        ['trafficdevice2'] = {
+            label = "Traffic Device (Right)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A traffic sign with an arrow pointing right",
+            client = {
+                image = 'trafficdevice.png',
+            }
+        },
+        ['meshfence1'] = {
+            label = "Mesh Fence Small",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A small mesh construction fence",
+            client = {
+                image = 'meshfence.png',
+            }
+        },
+        ['meshfence2'] = {
+            label = "Mesh Fence Medium",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medium mesh construction fence",
+            client = {
+                image = 'meshfence.png',
+            }
+        },
+        ['meshfence3'] = {
+            label = "Mesh Fence Large",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A large mesh construction fence",
+            client = {
+                image = 'meshfence.png',
+            }
+        },
+        ['waterbarrel'] = {
+            label = "Water Barrel",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A construction barrel full of water"
+        },
+        -- Homeless / camping items
+        ["tent"] = {
+            label = "Old Tent",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An old tent with several patches on it",
+            client = {
+                image = 'oldtent.png',
+            }
+        },
+        ["tent2"] = {
+            label = "Tent",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A camping tent",
+            client = {
+                image = 'tent.png',
+            }
+        },
+        ["tent3"] = {
+            label = "Large Tent",
+            weight = 2000,
+            stack = true,
+            close = true,
+            description = "A large party tent"
+            ,
+            client = {
+                image = 'largetent.png',
+            }
+        },
+        ["sleepingbag"] = {
+            label = "Sleeping Bag",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A sleeping bag rated for 20F"
+        },
+        ["hobostove"] = {
+            label = "Hobo Stove",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A burn barrel"
+        },
+        ["campfire"] = {
+            label = "Camp Fire",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Bundle of logs and kindling to make a camp fire"
+        },
+        ["hobomattress"] = {
+            label = "Hobo Mattress",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An old, stained mattress"
+        },
+        ["hoboshelter"] = {
+            label = "Hobo Shelter",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A cardboard homeless shelter"
+        },
+        ["canopy1"] = {
+            label = "Canopy (Green)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A green popup canopy",
+            client = {
+                image = 'canopy.png',
+            }
+        },
+        ["canopy2"] = {
+            label = "Canopy (Blue)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A blue popup canopy",
+            client = {
+                image = 'canopy.png',
+            }
+        },
+        ["canopy3"] = {
+            label = "Canopy (White)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A white popup canopy",
+            client = {
+                image = 'canopy.png',
+            }
+        },
+        ["cot"] = {
+            label = "Cot",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A camping cot"
+        },
+        -- Triathlon items
+        ["tristarttable"] = {
+            label = "Triathlon Start Table",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Triathlon check in desk"
+        },
+        ["tristartbanner"] = {
+            label = "Triathlon Start Banner",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Triathlon start banner"
+        },
+        ["trifinishbanner"] = {
+            label = "Triathlon Finish Banner",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Triathlon finish banner"
+        },
+        -- Tables
+        ["plastictable"] = {
+            label = "Plastic Table (Collapsible)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Simple portable plastic table",
+            client = {
+                image = 'plastictable.png',
+            }
+        },
+        ["plastictable2"] = {
+            label = "Plastic Table",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Simple portable plastic table",
+            client = {
+                image = 'plastictable.png',
+            }
+        },
+        ["woodtable"] = {
+            label = "Small Wood Table",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Small portable wood table",
+            client = {
+                image = 'woodtable.png',
+            }
+        },
+        ["woodtable2"] = {
+            label = "Wood Table",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Portable wood table",
+            client = {
+                image = 'woodtable.png',
+            }
+        },
+        -- Beach items
+        ["beachtowel"] = {
+            label = "Beach towel",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A towel for the beach"
+        },
+        ["beachumbrella"] = {
+            label = "Beach umbrella",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A beach umbrella (white and blue)",
+            client = {
+                image = 'beachumbrella.png',
+            }
+        },
+        ["beachumbrella2"] = {
+            label = "Beach umbrella",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A beach umbrella (green, white, blue)",
+            client = {
+                image = 'beachumbrella.png',
+            }
+        },
+        ["beachumbrella3"] = {
+            label = "Beach umbrella",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A beach umbrella (white)",
+            client = {
+                image = 'beachumbrella.png',
+            }
+        },
+        ["beachumbrella4"] = {
+            label = "Beach umbrella",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A beach umbrella (blue)",
+            client = {
+                image = 'beachumbrella.png',
+            }
+        },
+        ["beachball"] = {
+            label = "Beach ball",
+            weight = 200,
+            stack = true,
+            close = true,
+            description = "A beach ball"
+        },
+        -- Chairs
+        ["camp_chair_green"] = {
+            label = "Camp chair (green)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A lightweight, collapsible chair",
+            client = {
+                image = 'campchair_green.png',
+            }
+        },
+        ["camp_chair_blue"] = {
+            label = "Camp chair (blue)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A lightweight, collapsible chair",
+            client = {
+                image = 'campchair_blue.png',
+            }
+        },
+        ["camp_chair_plaid"] = {
+            label = "Camp chair (plaid)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A lightweight, collapsible chair",
+            client = {
+                image = 'campchair_plaid.png',
+            }
+        },
+        ["plastic_chair"] = {
+            label = "Plastic chair",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A lightweight, plastic chair"
+        },
+        ["folding_chair"] = {
+            label = "Folding chair",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A lightweight, folding chair"
+        },
+        -- Misc
+        ["greenscreen"] = {
+            label = "Green Screen Set",
+            weight = 2000,
+            stack = true,
+            close = true,
+            description = "A green screen production set"
+        },
+        ["ropebarrier"] = {
+            label = "Rope Barrier",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A rope barrier"
+        },
+        ["largesoccerball"] = {
+            label = "Large Soccer Ball",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A large soccer ball",
+            client = {
+                image = 'soccerball.png',
+            }
+        },
+        ["soccerball"] = {
+            label = "Soccer Ball",
+            weight = 200,
+            stack = true,
+            close = true,
+            description = "A soccer ball"
+        },
+        ["ramp1"] = {
+            label = "Wood Ramp (Gradual)",
+            weight = 25000,
+            stack = true,
+            close = true,
+            description = "A ramp with a slight incline",
+            client = {
+                image = 'woodramp.png',
+            }
+        },
+        ["ramp2"] = {
+            label = "Wood Ramp (Moderate)",
+            weight = 25000,
+            stack = true,
+            close = true,
+            description = "A ramp with a moderate incline",
+            client = {
+                image = 'woodramp.png',
+            }
+        },
+        ["ramp3"] = {
+            label = "Wood Ramp (Steep)",
+            weight = 25000,
+            stack = true,
+            close = true,
+            description = "A ramp with a steep incline",
+            client = {
+                image = 'woodramp.png',
+            }
+        },
+        ["ramp4"] = {
+            label = "Metal Ramp (Large)",
+            weight = 50000,
+            stack = true,
+            close = true,
+            description = "A large metal ramp with a moderate incline",
+            client = {
+                image = 'metalramp.png',
+            }
+        },
+        ["ramp5"] = {
+            label = "Metal Trailer Ramp",
+            weight = 25000,
+            stack = true,
+            close = true,
+            description = "A metal trailer ramp with a moderate incline",
+            client = {
+                image = 'metalramp.png',
+            }
+        },
+        ["skateramp"] = {
+            label = "Skate Ramp",
+            weight = 50000,
+            stack = true,
+            close = true,
+            description = "A skate ramp"
+        },
+        ["stuntramp1"] = {
+            label = "Stunt Ramp S",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A short stunt ramp"
+        },
+        ["stuntramp2"] = {
+            label = "Stunt Ramp M",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A medium stunt ramp"
+        },
+        ["stuntramp3"] = {
+            label = "Stunt Ramp L",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A large stunt ramp"
+        },
+        ["stuntramp4"] = {
+            label = "Stunt Ramp XL",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "An extra large stunt ramp"
+        },
+        ["stuntramp5"] = {
+            label = "Stunt Ramp XXL",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A XXL stunt ramp"
+        },
+        ["stuntloop1"] = {
+            label = "Stunt Half Loop",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A stunt half loop"
+        },
+        ["stuntloop2"] = {
+            label = "Stunt Loop",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A stunt full loop"
+        },
+        ["stuntloop3"] = {
+            label = "Stunt Spiral",
+            weight = 30000,
+            stack = true,
+            close = true,
+            description = "A stunt spiral"
+        },
+        ["stepladder"] = {
+            label = "Step Ladder",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Used to reach higher places"
+        },
+        ["trafficlight"] = {
+            label = "Traffic Light",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A deployable traffic control device"
+        },
+        ["sexdoll"] = {
+            label = "Sex Doll",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A deflated mini-sex doll"
+        },
+
+        -- Medical items
+        ["medbag"] = {
+            label = "Medical Bag",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medical bag"
+        },
+        ["examlight"] = {
+            label = "Exam Light",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medical exam light"
+        },
+        ["hazardbin"] = {
+            label = "Hazard Wastebin",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A hazardous waste bin"
+        },
+        ["microscope"] = {
+            label = "Microscope",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Make small things big"
+        },
+        ["oscillator"] = {
+            label = "Oscillator",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A heart beat monitor"
+        },
+        ["medmachine"] = {
+            label = "Medical Machine",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medical machine"
+        },
+        ["hospitalbedtable"] = {
+            label = "Bedside Table",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A hospital bedside table"
+        },
+        ["medtable"] = {
+            label = "Medical Table",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A medical table with machines on it"
+        },
+        ["bodybag"] = {
+            label = "Body Bag",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A body bag for putting deceased humans in"
+        },
+        -- Cargo items
+        ["cargobox1"] = {
+            label = "Large cardboardbox pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox2"] = {
+            label = "Large mixed pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox3"] = {
+            label = "Tall wrapped pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox4"] = {
+            label = "Cardboardboxes pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox5"] = {
+            label = "Sprunk boxes pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox6"] = {
+            label = "Cardboardboxes wrapped",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox7"] = {
+            label = "Cardboardboxes fragile",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["cargobox8"] = {
+            label = "Cardboardboxes + keg",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["pallet1"] = {
+            label = "Empty pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["pallet2"] = {
+            label = "Fertilizer pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["pallet3"] = {
+            label = "Weed bricks pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["pallet4"] = {
+            label = "Barrell pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["pallet5"] = {
+            label = "Slotmachine pallet",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["crate1"] = {
+            label = "Gopostal crate",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["crate2"] = {
+            label = "Wood crate",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["crate3"] = {
+            label = "Cluckinbell crate",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["crate4"] = {
+            label = "Water crate",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["crate5"] = {
+            label = "Animal cage",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        -- Xmas items
+        ["snowman1"] = {
+            label = "Snowman (Red)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["snowman2"] = {
+            label = "Snowman (Blue)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["snowman3"] = {
+            label = "Snowman (Green)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["snowman4"] = {
+            label = "Snowman",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["xmastree1"] = {
+            label = "Giant Xmas Tree",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["xmastree2"] = {
+            label = "Xmas Tree",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["candycane"] = {
+            label = "Candy Cane",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        ["xmaspresent"] = {
+            label = "Xmas Present",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = ""
+        },
+        -- Pushables
+        ["shoppingcart1"] = {
+            label = "Shopping Cart (Empty)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An empty, plastic shopping cart",
+            client = {
+                image = 'shoppingcart.png',
+            }
+        },
+        ["shoppingcart2"] = {
+            label = "Shopping Cart (Full)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A full plastic shopping cart",
+            client = {
+                image = 'shoppingcart.png',
+            }
+        },
+        ["shoppingcart3"] = {
+            label = "Shopping Cart (Empty)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An empty, metal shopping cart",
+            client = {
+                image = 'shoppingcart.png',
+            }
+        },
+        ["shoppingcart4"] = {
+            label = "Shopping Cart (Full)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A full metal shopping cart",
+            client = {
+                image = 'shoppingcart.png',
+            }
+        },
+        ["wheelbarrow"] = {
+            label = "Wheelbarrow",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Useful for moving materials"
+        },
+        ["warehousetrolly1"] = {
+            label = "Warehouse Trolly (Empty)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Industrial warehouse trolly"
+        },
+        ["warehousetrolly2"] = {
+            label = "Warehouse Trolly (Full)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Industrial warehouse trolly with a box on it"
+        },
+        ["roomtrolly"] = {
+            label = "Room Trolly",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Room service cart"
+        },
+        ["janitorcart1"] = {
+            label = "Janitor Cart",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A janitorial cart with cleaning supplies"
+        },
+        ["janitorcart2"] = {
+            label = "Janitor Cart",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A Diamond Casino janitorial cart with cleaning supplies"
+        },
+        ["mopbucket"] = {
+            label = "Mop Bucket",
+            weight = 500,
+            stack = true,
+            close = true,
+            description = "A mop bucket with cleaning solution"
+        },
+        ["metalcart"] = {
+            label = "Metal Cart",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An empty metal cart"
+        },
+        ["teacart"] = {
+            label = "Tea Cart",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An empty tea cart"
+        }, 
+        ["drinkcart"] = {
+            label = "Drink Cart",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An empty drink cart"
+        },
+        ["handtruck1"] = {
+            label = "Hand Truck",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "An empty hand truck",
+            client = {
+                image = 'handtruck.png',
+            }
+        },
+        ["handtruck2"] = {
+            label = "Hand Truck (boxes)",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A hand truck with boxes",
+            client = {
+                image = 'handtruck.png',
+            }
+        },
+        ["trashbin"] = {
+            label = "Trash Bin",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Trash bin"
+        },
+        ["lawnmower"] = {
+            label = "Lawnmower",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "Cuts grass"
+        },
+        ["toolchest"] = {
+            label = "Tool Chest",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A sturdy toolchest"
+        },
+        ["carjack"] = {
+            label = "Car jack",
+            weight = 1000,
+            stack = true,
+            close = true,
+            description = "A car jack"
+        }
+
         ```
     </details>
 3. Add the images from `images/` to your inventory scripts
@@ -959,7 +1952,7 @@ If you want to add or modify a placeable item, follow the below instructions.
 
 
 ## Dependencies
-- Framework: QBCore / ESX / Or other frameworks (_must implement framework specific solutions in framework.lua_)
+- Framework: QBCore/ Qbox / ESX / Or other frameworks (_must implement framework specific solutions in framework.lua_)
 - Inventory: QBCore / ESX / OX / or equivalent
 - Notifications: QBCore / ESX / OX / or equivalent
 - Target: qb-target / ox-target or equivalent script

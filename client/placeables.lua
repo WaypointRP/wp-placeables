@@ -17,30 +17,30 @@ end
 
 -- Gets the direction the camera is looking for the raycast function
 local function RotationToDirection(rotation)
-	local adjustedRotation = {
-		x = (math.pi / 180) * rotation.x,
-		y = (math.pi / 180) * rotation.y,
-		z = (math.pi / 180) * rotation.z
-	}
-	local direction = {
-		x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
-		y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
-		z = math.sin(adjustedRotation.x)
-	}
-	return direction
+    local adjustedRotation = {
+        x = (math.pi / 180) * rotation.x,
+        y = (math.pi / 180) * rotation.y,
+        z = (math.pi / 180) * rotation.z,
+    }
+    local direction = {
+        x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
+        y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
+        z = math.sin(adjustedRotation.x),
+    }
+    return direction
 end
 
 -- Uses a RayCast to get the entity, coords, and whether we "hit" something with the raycast
 -- Object passed in, is the current object that we want the raycast to ignore
 local function RayCastGamePlayCamera(distance, object, raycastDetectWorldOnly)
     local cameraRotation = GetGameplayCamRot()
-	local cameraCoord = GetGameplayCamCoord()
-	local direction = RotationToDirection(cameraRotation)
-	local destination = {
-		x = cameraCoord.x + direction.x * distance,
-		y = cameraCoord.y + direction.y * distance,
-		z = cameraCoord.z + direction.z * distance
-	}
+    local cameraCoord = GetGameplayCamCoord()
+    local direction = RotationToDirection(cameraRotation)
+    local destination = {
+        x = cameraCoord.x + direction.x * distance,
+        y = cameraCoord.y + direction.y * distance,
+        z = cameraCoord.z + direction.z * distance,
+    }
 
     -- Trace flag 4294967295 means the raycast will intersect with everything (including vehicles)
     -- Trace flag 1 means the raycast will only intersect with the world (ignoring other entities like peds, cars, etc)
@@ -49,17 +49,17 @@ local function RayCastGamePlayCamera(distance, object, raycastDetectWorldOnly)
         traceFlag = 1
     end
 
-	local a, hit, coords, d, entity = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, traceFlag, object, 0))
-	return hit, coords, entity
+    local a, hit, coords, d, entity = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, traceFlag, object, 0))
+    return hit, coords, entity
 end
 
 -- Used to Draw the text on the screen
 local function Draw2DText(content, font, colour, scale, x, y)
     SetTextFont(font)
     SetTextScale(scale, scale)
-    SetTextColour(colour[1],colour[2],colour[3], 255)
+    SetTextColour(colour[1], colour[2], colour[3], 255)
     SetTextEntry("STRING")
-    SetTextDropShadow(0, 0, 0, 0,255)
+    SetTextDropShadow(0, 0, 0, 0, 255)
     SetTextDropShadow()
     SetTextEdge(4, 0, 0, 0, 255)
     SetTextOutline()
@@ -77,7 +77,7 @@ local function placeItem(item, coords, heading, shouldSnapToGround)
     -- Cancel any active animation
     ClearPedTasks(ped)
 
-    Progressbar("place_item", "Placing "..item.label, 750, false, true, {
+    Progressbar("place_item", "Placing " .. item.label, 750, false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
@@ -113,16 +113,16 @@ local function placeItem(item, coords, heading, shouldSnapToGround)
             -- Use statebag property itemName to set the itemName on the entity.
             -- This value is used to grant the correct item back to the player when they pick it up.
             -- It also solves the issue of the same model being used for multiple items
-            Entity(obj).state:set('itemName', itemName, true)
+            Entity(obj).state:set("itemName", itemName, true)
 
-            CreateLog(itemName, true) 
+            CreateLog(itemName, true)
         end
 
         SetModelAsNoLongerNeeded(itemModel)
     end, function() -- Cancel
         StopAnimTask(ped, animationDict, animation, 1.0)
         Notify("Canceled..", "error")
-	end)
+    end)
 end
 
 -- Starts a thread that puts the player into item placement mode
@@ -131,7 +131,7 @@ end
 local function startItemPlacementMode(item)
     -- This is to prevent entering place mode multiple times if its already active
     if isInPlaceItemMode then
-        Notify('Already placing an item', 'error', 5000)
+        Notify("Already placing an item", "error", 5000)
         return
     end
 
@@ -158,15 +158,15 @@ local function startItemPlacementMode(item)
             SetEntityCoords(obj, coords.x, coords.y, coords.z + zOffset)
 
             -- Display the controls
-            Draw2DText('[E] Place\n[Shift+E] Place on ground\n[Scroll Up/Down] Rotate\n[Shift+Scroll Up/Down] Raise/lower', 4, {255, 255, 255}, 0.4, 0.85, 0.85)
-            Draw2DText('[Scroll Click] Change mode\n[Right Click / Backspace] Exit place mode', 4, {255, 255, 255}, 0.4, 0.85, 0.945)
+            Draw2DText("[E] Place\n[Shift+E] Place on ground\n[Scroll Up/Down] Rotate\n[Shift+Scroll Up/Down] Raise/lower", 4, { 255, 255, 255, }, 0.4, 0.85, 0.85)
+            Draw2DText("[Scroll Click] Change mode\n[Right Click / Backspace] Exit place mode", 4, { 255, 255, 255, }, 0.4, 0.85, 0.945)
 
             -- Handle various key presses and actions
 
             -- Controls for placing item
 
             -- Pressed Shift + E - Place object on ground
-            if IsControlJustReleased(0, 38) and IsControlPressed(0, 21)then
+            if IsControlJustReleased(0, 38) and IsControlPressed(0, 21) then
                 isInPlaceItemMode = false
 
                 local objHeading = GetEntityHeading(obj)
@@ -272,7 +272,7 @@ local function pickUpItem(itemData)
             SetEntityAsMissionEntity(itemEntity, true, true)
             DeleteEntity(itemEntity)
 
-            local object = {coords = coords, model = itemModel}
+            local object = { coords = coords, model = itemModel, }
             TriggerServerEvent("wp-placeables:server:deleteWorldObject", object)
 
             CreateLog(itemName, false)
@@ -283,15 +283,15 @@ local function pickUpItem(itemData)
     end
 end
 
-RegisterNetEvent('wp-placeables:client:placeItem', function(item)
+RegisterNetEvent("wp-placeables:client:placeItem", function(item)
     if not IsPedInAnyVehicle(PlayerPedId(), true) then
         startItemPlacementMode(item)
     else
-        Notify('You cannot place items while in a vehicle', 'error', 5000)
+        Notify("You cannot place items while in a vehicle", "error", 5000)
     end
 end)
 
-RegisterNetEvent('wp-placeables:client:pickUpItem', function(data)
+RegisterNetEvent("wp-placeables:client:pickUpItem", function(data)
     pickUpItem(data)
 end)
 
@@ -322,7 +322,7 @@ for _, prop in pairs(Config.PlaceableProps) do
             targetOptions[#targetOptions + 1] = customOption
         end
     end
-    
+
     -- Make sure we only define the target options once for each model
     -- If you define the same model twice:
     --      In qb-target, it will override the options, and the last one defined is used
@@ -330,7 +330,7 @@ for _, prop in pairs(Config.PlaceableProps) do
     if not targetModels[prop.model] then
         AddTargetModel(prop.model, {
             options = targetOptions,
-            distance = 1.5  
+            distance = 1.5,
         })
         targetModels[prop.model] = true
     end
