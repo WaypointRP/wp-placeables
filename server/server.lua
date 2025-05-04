@@ -35,3 +35,12 @@ RegisterNetEvent("wp-placeables:server:AddItem", function(itemName)
 
     AddItem(src, itemName, 1)
 end)
+
+AddEventHandler("onResourceStart", function(resourceName)
+    if resourceName == GetCurrentResourceName() then
+        -- Give the script some time to start
+        Wait(100)
+
+        ValidateOxLibUsage()
+    end
+end)
